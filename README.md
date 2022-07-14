@@ -35,4 +35,11 @@ The following description of the symmetry $G\subset S_n$ should be provided in t
 >
 >(1 14 27)(2 4 10)(3 22 13)(5 6 21)(7 25 11)(8 19 18)(9 16 26)(12 20 24)(15 23 17)
 
+### Format for a simplex
+
+Every simplex is encoded by a row of $n$ binary digits. The $i$th from the left digit is 1 whenever $i$ is a vertex of the simplex, and is 0 otherwise. For instance, the row
+
+>111010100000000
+
+encodes the simplex $\{1,2,3,5,7\}$
 
