@@ -74,4 +74,4 @@ The first line of the description of a simplicial complex contains the number $k
 
 The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described only by two files **symmetry_group.dat** and **triang.dat** together. 
 
-### Input/output for 
+### Program find 
