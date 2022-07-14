@@ -2,7 +2,7 @@
 
 This repository contains C++ programs implementing algorithms for the paper 
 
-*A.A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", arXiv???*
+Alexander A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", arXiv???
 
 This README file contains only technical information on the realizations of the algorithms. For the aims and descriptions of the algorithms, and also for mathematical terminology used below, see the quoted paper.
 
@@ -24,6 +24,8 @@ Each directory, except for the directory **common**, contains a separate program
 Among these programs, the only two non-trivial are the programs **find** and **check**. For them, we will produce detailed descriptions below. The other programs are very simple. They do not require any special explanation.
 
 ## Input/output format
+
+The files with the input data are to be put in the directory of the program (for instance, **find**). The output files also are written to the same directory. Below, we first describe the formats that are used for main types of data (symmetry group, simplex, simplicial complex), and then the input/output data for all the 8 programs listed above. 
 
 The main object we are working with is a pure $d$-dimensional simplicial complex with $n$ vertices numbered from $1$ to $n$ with the given symmetry group $G$. In the most important for us case, $d=16$, $n=27$, and $|G|=351$. 
 
@@ -71,3 +73,5 @@ The first line of the description of a simplicial complex contains the number $k
 >110111110010111001111110000
 
 The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described only by two files **symmetry_group.dat** and **triang.dat** together. 
+
+### Input/output for 
