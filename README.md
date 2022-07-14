@@ -135,3 +135,27 @@ The program **check** says whether it has succeeded to check that $K$ is a combi
      
 
 **Remark.** If a simplex is put to the list of *bad simplices*, it does not follow that its link is not a combinatorial sphere. A positive result guarantees that $K$ is a combinatorial manifold but a negative result does not guarantee that $K$ is not.
+
+### Program "num_neighbors"
+
+**Input data:**
+
++ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
+
+**Output data:**
+
++ A file **result.dat**. Each line of this file contains two numbers $n$ and $r(n)$ separated by a space, where $r(n)$ is the number of $(d-2)$-simplices $\rho\in K$ with $n(\rho)=n$. Recall that $n(\rho)$ is the number of $d$-simplices $\sigma\in K$ containing $\rho$. For instance, the file **result.dat** can look like that: 
+
+    ```
+    3 849771
+    4 1509651
+    5 697788
+    6 201942
+    7 40716
+    8 9477
+    9 351
+    ```
+      
+
+
