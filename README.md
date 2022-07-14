@@ -52,6 +52,8 @@ We use this identification of simplices and numbers to order the simplices from 
 
 We typically work with rather large $G$-invariant simplicial complexes.
 
+The file describing a simplicial complex is usually called **triang.dat**.
+
 The first line of the description of a simplicial complex contains the number $k$ of $G$-orbits of maximal simplices. The consecutive $k$ lines contain rows of 0's and 1's encoding representatives of $G$-orbits of maximal simplices. The smallest representative must be chosen in each orbit and these representatives must be ordered from smallest to largest (w.r.t. the ordering described above). For instance, a file describing a simplicial complex can look like that:
 
 >286
@@ -65,3 +67,5 @@ The first line of the description of a simplicial complex contains the number $k
 >...
 >
 >110111110010111001111110000
+
+The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described by two files **symmetry_group.dat** and **triang.dat** together. 
