@@ -49,3 +49,19 @@ row as a reversed binary notation for a number. For instance, the above row corr
 We use this identification of simplices and numbers to order the simplices from smallest to largest in all lists we use.
 
 ### Format for a simplicial complex
+
+We typically work with rather large $G$-invariant simplicial complexes.
+
+The first line of the description of a simplicial complex contains the number $k$ of $G$-orbits of maximal simplices. The consecutive $k$ lines contain rows of 0's and 1's encoding representatives of $G$-orbits of maximal simplices. The smallest representative must be chosen in each orbit and these representatives must be ordered from smallest to largest (w.r.t. the ordering described above). For instance, a file describing a simplicial complex can look like that:
+
+>286
+>
+>111111111111110111000000000
+>
+>111111111111011111000000000
+>
+>111111101111111111000000000
+>
+>...
+>
+>110111110010111001111110000
