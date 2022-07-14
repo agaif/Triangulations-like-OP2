@@ -6,4 +6,4 @@ This README file contains only technical information on the realizations of the 
 
 ## General information
 
-Each directory, except for the directory common.cpp
+Each directory, except for the directory common
