@@ -136,6 +136,25 @@ The program **check** says whether it has succeeded to check that $K$ is a combi
 
 **Remark.** If a simplex is put to the list of *bad simplices*, it does not follow that its link is not a combinatorial sphere. A positive result guarantees that $K$ is a combinatorial manifold but a negative result does not guarantee that $K$ is not.
 
+### Program "permute"
+
+**Input data:**
+
++ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **triang.dat** describing a pure simplicial complex $K$ in the standard format.
++ A file **permutation.dat** consisting of a single line that contains a permutation $h$ in cycle notation.
+
+**Output data:**
+
+First, the program finds out whether the permutation $h$ normalizes the group $G$. If $h$ does not normalize $G$, then the only output is the line
+
+```
+The permutation does not belong to the normalizer of the group
+```
+
+Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-invariant simplicial complex. Then the output is a file **triang_new.dat** containing $h(K)$ in the standard format.
+
+
 ### Program "num_neighbors"
 
 **Input data:**
@@ -157,5 +176,14 @@ The program **check** says whether it has succeeded to check that $K$ is a combi
     9 351
     ```
       
+### Program "num_neighbors_pairs"
 
+**Input data:**
 
++ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
++ A file **edge.dat** containing two (different) numbers $u$ and $v$ separated by a space. These are numbers of vertices, so they must be in the range  from 1 to the total number of vertices $n$. 
+
+**Output data:**
+
++ A file **result.dat**. The first line of this file contains a single number $k$ that is equal to the maximal among all numbers $n(\tau\setminus\\{u\\})$ and $n(\tau\setminus\\{v\\})$, where $\tau$ runs over all $(d-1)$-dimensional simplices $\tau\in K$ containing both $u$ and $v$. The next $k$ lines of the file contain the $k\times k$ matrix $N_{pq}$, $1\le p,q\le k$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $n(\tau\setminus \\{u\\})=p$, and $n(\tau\setminus \\{v\\})=q$.
