@@ -46,3 +46,6 @@ row as a reversed binary notation for a number. For instance, the above row corr
 
 > $1010111_2=87$ 
 
+We use this identification of simplices and numbers to order the simplices from smallest to largest in all lists we use.
+
+### Format for a simplicial complex
