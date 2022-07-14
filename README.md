@@ -16,3 +16,6 @@ Each directory, except for the directory **common**, contains a separate program
 4. **num_neighbors_pairs** - for a given $d$-dimensional simplicial complex $K$ and two given vertices $u$ and $v$ of it, computes the matrix $(N_{pq})$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $n(\tau\setminus u)=p$, and $n(\tau\setminus v)=q$. 
 5. **triple** - finds all distinguished subcomplexes of a combinatorial $d$-manifold $K$, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices.
 6. **nu_param** - computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex.
+7. **allsimp** - given a symmetry group $G$ and a list of representatives of $G$-orbits of simplices produces the list of all simplices in these orbits.
+8. **operations** - performs basic operations (compairing, union, intersection, difference) for simplicial complexes.  
+
