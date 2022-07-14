@@ -41,5 +41,5 @@ Every simplex is encoded by a row of $n$ binary digits. The $i$th from the left 
 
 >111010100000000
 
-encodes the simplex $\{1,2,3,5,7\}$
+encodes the simplex $\\{1,2,3,5,7\\}$
 
