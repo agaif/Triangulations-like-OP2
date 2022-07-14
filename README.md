@@ -6,4 +6,4 @@ This README file contains only technical information on the realizations of the 
 
 ## General information
 
-Each directory, except for the directory **common**, contains a separate program. Below is the list of all these programs with their short descriptions. The directory **common** contains two **.cpp** files (together with the corresponding **.hpp** files) that are used by all the programs. Namely, **myiofunctions.cpp** contains input/output functions and **permutation.cpp** contains the class **Permutation**.
+Each directory, except for the directory **common**, contains a separate program. Below is the list of all these programs with their short descriptions. The directory **common** contains two **.cpp** files (together with the corresponding **.hpp** files) that are used by all the programs. Namely, **myiofunctions.cpp / myiofunctions.hpp** contains input/output functions and **permutation.cpp / permutation.hpp** contains the class **Permutation** that allows working with elements of permutation groups.
