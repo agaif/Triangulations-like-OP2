@@ -25,119 +25,113 @@ Among these programs, the only two non-trivial are the programs **find** and **c
 
 ## Input/output format
 
-The files with the input data are to be put in the directory of the program (for instance, **find**). The output files also are written to the same directory. Below, we first describe the formats that are used for main types of data (symmetry group, simplex, simplicial complex), and then the input/output data for all the 8 programs listed above. 
+The files with the input data are to be put in the directory of the program (for instance, **find**). The output files also are written to the same directory. Below, we first describe the standard formats that are used for main types of data (symmetry group, simplex, simplicial complex), and then the input/output data for all the 8 programs listed above. 
 
 The main object we are working with is a pure $d$-dimensional simplicial complex with $n$ vertices numbered from $1$ to $n$ with the given symmetry group $G$. In the most important for us case, $d=16$, $n=27$, and $|G|=351$. 
 
-### Format for the group $G$
+### Standard format for a group $G$
 
-The following description of the symmetry $G\subset S_n$ should be provided in the file **symmetry_group.dat**. The first line of the file contains the degree $n$ of the permutation group. Further lines contain generators of $G$, one generator per line. Each generator is given in cycle notation, cycles are surrounded by round brackets, vertices in each cycle are separated by spaces. Additional spaces are irrelevant. Empty lines are not allowed.  For instance, the $351$-element group $G_{351}\subset S_{27}$ is given by the following file:
+The following description of the symmetry $G\subset S_n$ should be provided in the file **symmetry_group.dat**. The first line of the file contains the degree $n$ of the permutation group. Further lines contain generators of $G$, one generator per line. Each generator is given in cycle notation, cycles are surrounded by round brackets, vertices in each cycle are separated by spaces. Additional spaces are irrelevant. Empty lines are not allowed.  For instance, the $351$-element group $G_{351}\subset S_{27}$ is given by the following file: 
+```
+27
+(1 2 3 4 5 6 7 8 9 10 11 12 13)(14 15 16 17 18 19 20 21 22 23 24 25 26)
+(1 14 27)(2 4 10)(3 22 13)(5 6 21)(7 25 11)(8 19 18)(9 16 26)(12 20 24)(15 23 17)
+```
 
->27
->
->(1 2 3 4 5 6 7 8 9 10 11 12 13)(14 15 16 17 18 19 20 21 22 23 24 25 26)
->
->(1 14 27)(2 4 10)(3 22 13)(5 6 21)(7 25 11)(8 19 18)(9 16 26)(12 20 24)(15 23 17)
+### Standard format for a simplex
 
-### Format for a simplex
-
-Every simplex is encoded by a row of $n$ binary digits. The $i^{th}$ from the left digit is 1 whenever $i$ is a vertex of the simplex, and is 0 otherwise. For instance, the row
-
->111010100000000
-
+Every simplex is encoded by a row of $n$ binary digits. The $i^{th}$ from the left digit is 1 whenever $i$ is a vertex of the simplex, and is 0 otherwise. For instance, the row 
+```
+111010100000000
+``` 
 encodes the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex with 15 vertices. We conveniently interpret every such 
-row as a reversed binary notation for a number. For instance, the above row corresponds to the number
+row as a reversed binary notation for a number. For instance, the above row corresponds to the binary number
+$1010111_2=87$. We order the simplices according to the corresponding numbers from smallest to largest in all lists we use.
 
-> $1010111_2=87$ 
-
-We use this identification of simplices and numbers to order the simplices from smallest to largest in all lists we use.
-
-### Format for a simplicial complex
+### Standard format for a simplicial complex
 
 We typically work with rather large $G$-invariant simplicial complexes.
 
 The file describing a simplicial complex is usually called **triang.dat**.
 
-The first line of the description of a simplicial complex contains the number $k$ of $G$-orbits of maximal simplices. The consecutive $k$ lines contain rows of 0's and 1's encoding representatives of $G$-orbits of maximal simplices. The smallest representative must be chosen in each orbit and these representatives must be ordered from smallest to largest (w.r.t. the ordering described above). For instance, a file describing a simplicial complex can look like that:
+The first line of the description of a simplicial complex contains the number $k$ of $G$-orbits of maximal simplices. The consecutive $k$ lines contain rows of 0's and 1's encoding representatives of $G$-orbits of maximal simplices as described above. The smallest representative must be chosen in each orbit and these representatives must be ordered from smallest to largest (w.r.t. the ordering described above). For instance, a file describing a simplicial complex can look like that:
+```
+286
+111111111111110111000000000
+111111111111011111000000000
+111111101111111111000000000
+. . . . .
+110111110010111001111110000
+```
 
->286
->
->111111111111110111000000000
->
->111111111111011111000000000
->
->111111101111111111000000000
->
->...
->
->110111110010111001111110000
-
-The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described only by two files **symmetry_group.dat** and **triang.dat** together. 
+The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described only by the two files **symmetry_group.dat** and **triang.dat** together. 
 
 ### Program "find"
 
 **Input data:**
 
-+ The file **symmetry.dat** describing the symmetry group $G$ in the format explained above.
-+ The file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,
->16 &nbsp; 100386 
++ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,  
+`16 100386` <br/> 
+     
 
 **Output data:**
 
-+ The file **triangulations.dat** containing the list of all weak pseudomanifolds found. The information about each pseudomanifold starts with the line of the form
++ A file **triangulations.dat** containing the list of all weak pseudomanifolds found. The information about each pseudomanifold starts with the line of the form <br/> <br/> 
+` *** <number of the pseudomanifold> ` <br/><br/>
+after which follows the description of the pseudomanifold in the standard format. Different pseudomanifolds are separated by empty lines. The numbering of pseudomanifolds starts from 1. So the file  **triangulations.dat** looks like that 
+    ```
+    *** 1
+    286
+    111111111111110111000000000
+    . . . . . 
+    110111110010111001111110000
 
-> \*\*\* \<number of the pseudomanifold\>
+    *** 2
+    286
+    111111111111111110000000000
+    . . . . . 
+    001111110110111010111110000
 
-after which follows the description of the pseudomanifold in the format explained above. Different pseudomanifolds are separated by empty lines. The numbering of pseudomanifolds starts from 1. So the file  **triangulations.dat** may look like that 
-> \*\*\* 1
-> 
-> 286
-> 
-> 111111111111110111000000000
->
-> ...
->
-> 110111110010111001111110000
-> 
-> &nbsp;
-> 
-> \*\*\* 2
-> 
-> 286
-> 
-> 111111111111111110000000000
->
-> ...
->
-> 001111110110111010111110000
-> 
-> &nbsp;
-> 
-> ...
+    . . . . . 
+    ```
 
-+ The file **triangulations_with_sizes.dat** containing the same list with the additionally information on the sizes of the $G$-orbits of maximal simplices. The size of each $G$-orbit is written directly after the representative of this orbit (separated by space). For instance,
-> \*\*\* 1
-> 
-> 286
-> 
-> 111111111111110111000000000 351
->
-> ...
->
-> 110111110010111001111110000 351
-> 
-> &nbsp;
-> 
-> \*\*\* 2
-> 
-> 286
-> 
-> 111111111111111110000000000 351
->
-> ...
->
-> 001111110110111010111110000 351
-> 
-> &nbsp;
-> 
-> ...
++ A file **triangulations_with_sizes.dat** containing the same list with the additionally information on the sizes of the $G$-orbits of maximal simplices. The size of each $G$-orbit is written directly after the representative of this orbit (separated by space). For instance,
+    ```
+    *** 1
+    286
+    111111111111110111000000000 351
+    . . . . . 
+    110111110010111001111110000 351
+
+    *** 2
+    286
+    111111111111111110000000000 351
+    . . . . . 
+    001111110110111010111110000 351
+
+    . . . . . 
+    ```
+### Program "check"
+
+**Input data:**
+
++ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **triang.dat** describing a pure simplicial complex $K$ in the standard format.
+
+**Output data:**
+
+The program **check** says whether it has succeeded to check that $K$ is a combinatorial manifold. So there are two possibilities:
+
++ If the program succeeds to check that $K$ is a combinatorial manifold, then the output is just the line
+    ``` 
+    This is a combinatorial manifold
+    ```
+
++ If the program does not succeed to check that $K$ is a combinatorial manifold, then it writes the smallest representatives of $G$-orbits of simplices for which it has failed to check that their links are combinatorial spheres to the file **bad_simplices.dat** in the standard format. Besides, the program produces the line 
+     ```
+     There are <number of orbits of bad simplices> bad links
+     ```
+     
+
+**Remark.** If a simplex is put to the list of *bad simplices*, it does not follow that its link is not a combinatorial sphere. A positive result guarantees that $K$ is a combinatorial manifold but a negative result does not guarantee that $K$ is not.
