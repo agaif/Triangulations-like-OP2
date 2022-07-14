@@ -37,7 +37,7 @@ The following description of the symmetry $G\subset S_n$ should be provided in t
 
 ### Format for a simplex
 
-Every simplex is encoded by a row of $n$ binary digits. The $i$th from the left digit is 1 whenever $i$ is a vertex of the simplex, and is 0 otherwise. For instance, the row
+Every simplex is encoded by a row of $n$ binary digits. The $i$ th from the left digit is 1 whenever $i$ is a vertex of the simplex, and is 0 otherwise. For instance, the row
 
 >111010100000000
 
