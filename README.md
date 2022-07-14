@@ -78,7 +78,66 @@ The file **triang.dat** does not contain a description of the group $G$. So, in 
 
 **Input data:**
 
-+ the file **symmetry.dat** describing the symmetry group $G$ in the format explained above,
-+ the file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,
-< 16  100386 >
++ The file **symmetry.dat** describing the symmetry group $G$ in the format explained above.
++ The file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,
+>16 &nbsp; 100386 
 
+**Output data:**
+
++ The file **triangulations.dat** containing the list of all weak pseudomanifolds found. The information about each pseudomanifold starts with the line of the form
+
+> \*\*\* \<number of the pseudomanifold\>
+
+after which follows the description of the pseudomanifold in the format explained above. Different pseudomanifolds are separated by empty lines. The numbering of pseudomanifolds starts from 1. So the file  **triangulations.dat** may look like that 
+> \*\*\* 1
+> 
+> 286
+> 
+> 111111111111110111000000000
+>
+> ...
+>
+> 110111110010111001111110000
+> 
+> &nbsp;
+> 
+> \*\*\* 2
+> 
+> 286
+> 
+> 111111111111111110000000000
+>
+> ...
+>
+> 001111110110111010111110000
+> 
+> &nbsp;
+> 
+> ...
+
++ The file **triangulations_with_sizes.dat** containing the same list with the additionally information on the sizes of the $G$-orbits of maximal simplices. The size of each $G$-orbit is written directly after the representative of this orbit (separated by space). For instance,
+> \*\*\* 1
+> 
+> 286
+> 
+> 111111111111110111000000000 351
+>
+> ...
+>
+> 110111110010111001111110000 351
+> 
+> &nbsp;
+> 
+> \*\*\* 2
+> 
+> 286
+> 
+> 111111111111111110000000000 351
+>
+> ...
+>
+> 001111110110111010111110000 351
+> 
+> &nbsp;
+> 
+> ...
