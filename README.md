@@ -41,5 +41,8 @@ Every simplex is encoded by a row of $n$ binary digits. The $i$th from the left 
 
 >111010100000000
 
-encodes the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex with 15 vertices.
+encodes the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex with 15 vertices. We conveniently interpret every such 
+row as a reversed binary notation for a number. For instance, the above row corresponds to the number
+
+> $1010111_2=87$ 
 
