@@ -74,4 +74,11 @@ The first line of the description of a simplicial complex contains the number $k
 
 The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described only by two files **symmetry_group.dat** and **triang.dat** together. 
 
-### Program find 
+### Program "find"
+
+**Input data:**
+
++ the file **symmetry.dat** describing the symmetry group $G$ in the format explained above,
++ the file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space; the first number $d$ is the dimension of weak pseudomanifold $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,
+> 16 100386
+
