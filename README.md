@@ -25,4 +25,6 @@ Among these programs, the only two non-trivial are the programs **find** and **c
 
 The main object we are working with is a pure $d$-dimensional simplicial complex with $n$ vertices numbered from $1$ to $n$ with the given symmetry group $G$. In the most important for us case, $d=16$, $n=27$, and $|G|=351$. 
 
+### Format for the group $G$
 
+The following description of the symmetry $G\subset S_n$ should be contained in the file 
