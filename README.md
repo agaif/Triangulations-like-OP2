@@ -80,5 +80,5 @@ The file **triang.dat** does not contain a description of the group $G$. So, in 
 
 + the file **symmetry.dat** describing the symmetry group $G$ in the format explained above,
 + the file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,
-> 16 $\\ $  100386
+< 16  100386 >
 
