@@ -68,4 +68,4 @@ The first line of the description of a simplicial complex contains the number $k
 >
 >110111110010111001111110000
 
-The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described by two files **symmetry_group.dat** and **triang.dat** together. 
+The file **triang.dat** does not contain a description of the group $G$. So, in fact, a simplicial complex is described only by two files **symmetry_group.dat** and **triang.dat** together. 
