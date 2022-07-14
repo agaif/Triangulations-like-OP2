@@ -18,4 +18,6 @@ Each directory, except for the directory **common**, contains a separate program
 6. **nu_param** - computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex.
 7. **allsimp** - given a symmetry group $G$ and a list of representatives of $G$-orbits of simplices produces the list of all simplices in these orbits.
 8. **operations** - performs basic operations (compairing, union, intersection, difference) for simplicial complexes.  
+Among these programs, the only two non-trivial are the programs **find** and **check**. For them, we will produce detailed descriptions below. The other programs are very simple. They do not require any special explanation.
 
+## Input/output format
