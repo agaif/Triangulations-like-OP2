@@ -1,6 +1,8 @@
 # Triangulations of manifolds like the octonionic projective plane
 
-This repository contains C++ programs implementing algorithms for the paper *A.A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", arXiv???*
+This repository contains C++ programs implementing algorithms for the paper 
+
+*A.A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", arXiv???*
 
 This README file contains only technical information on the realizations of the algorithms. For the aims and descriptions of the algorithms, and also for mathematical terminology used below, see the quoted paper.
 
