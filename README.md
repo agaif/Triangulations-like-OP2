@@ -214,3 +214,39 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
     000000000000000001111111011
     type 2
     ```
+
+### Program "allsimp"
+
+**Input data:**
+
++ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
+
+**Output data:**
+
++ A file **triang_all.dat**. The first line contains the total number of $d$-simplices of $K$; the following lines contain the list of all the $d$-simplices in the standard format. 
+
+### Program "operations"
+
+**Input data:**
+
++ Files **triang1.dat** and  **triang2.dat** describing two $d$-dimensional pure simplicial complexes $K_1$ and $K_2$, respectively (in the standard format). The program works correctly only if the complexes $K_1$ and $K_2$ have equal dimensions and their descriptions correspond to the same symmetry group $G$. (Nevertheless, the description of the group $G$ is not needed.) 
++ The user is asked to choose the type of the operation:
+
+    ```
+    Input the type of the operation:
+      1 compare
+      2 union
+      3 intersection
+      4 difference
+    ```
+    
+**Output data:**
+
++ For the operation **compare** the program gives one of the four answers: <br/>
+`The complexes coincide` <br/>
+`The first complex is contained in the second one` <br/>
+`The second complex is contained in the first one` <br/>
+`Neither of the complexes is contained in the other one` <br/>
+
++ For any of the other three operations, the reslting simplicial complex is written to the file **triang_res.dat**. Note that the operations **intersection** and **difference** are understood in the sense of pure $d$-dimensional complexes. This means that they yield the simplicial complexes consisting of all $d$-simplices $\sigma\in K_1$ that belong (respectively, do not belong) to $K_2$, and all their faces.
