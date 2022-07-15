@@ -296,10 +296,16 @@ Permutation nu (3, "(12)");
 ```
 yields the permutation `nu` with `nu.seq[0]`, `nu.seq[1]`, and `nu.seq[2]` equal to $1$, $0$, and $2$, respectively.
 
-The third constructor produces the permutation with the given vector `seq`.
+The third constructor produces the permutation with the given vector `seq`. If the given vector does not provide a permutation, in the obtained object the variable `well_defined` will be `false`.
 
 #### Methods of the class Permutation
 
+```cpp
+int get_seq (int i) const;      // returns seq[i]
+int degree () const;            // the degree of the permutation i.e. seq.size()
+bool is_well_defined () const;  // returns well_defined
+Permutation inv () const;
+```
 
 
 ### Library myiofunctions.cpp / myiofunctions.hpp
