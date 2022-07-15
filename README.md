@@ -152,7 +152,7 @@ The program **check** says whether it has succeeded to check that $K$ is a combi
 
 + A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a pure simplicial complex $K$ in the standard format.
-+ A file **permutation.dat** consisting of a single line that contains a permutation $h$ in cycle notation.
++ A file **permutation.dat** consisting of a single line that contains a permutation $h$ in cycle notation. (Cycles are surrounded by round brackets, vertices in each cycle are separated by spaces.)
 
 **Output data:**
 
@@ -174,7 +174,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Output data:**
 
-+ A file **result.dat**. Each line of this file contains two numbers $n$ and $r(n)$ separated by a space, where $r(n)$ is the number of $(d-2)$-simplices $\rho\in K$ with $n(\rho)=n$. Recall that $n(\rho)$ is the number of $d$-simplices $\sigma\in K$ containing $\rho$. For instance, the file **result.dat** can look like that: 
++ A file **result.dat**. Each line of this file contains two numbers $s$ and $N_s$ separated by a space, where $N_s$ is the number of $(d-2)$-simplices $\rho\in K$ with $s(\rho)=s$. Recall that $s(\rho)$ is the number of $d$-simplices $\sigma\in K$ containing $\rho.$ For instance, the file **result.dat** can look like that: 
 
     ```
     3 849771
@@ -196,7 +196,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Output data:**
 
-+ A file **result.dat**. The first line of this file contains a single number $k$ that is equal to the maximal among all numbers $n(\tau\setminus\\{u\\})$ and $n(\tau\setminus\\{v\\})$, where $\tau$ runs over all $(d-1)$-dimensional simplices $\tau\in K$ containing both $u$ and $v$. The next $k$ lines contain the $k\times k$ matrix $N_{pq}$, $1\le p,q\le k$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $n(\tau\setminus \\{u\\})=p$, and $n(\tau\setminus \\{v\\})=q$. (The entries of each row of the matrix are separated by spaces.)
++ A file **result.dat**. The first line of this file contains a single number $s_{max}$ that is equal to the maximal among all numbers $s(\tau\setminus\\{u\\})$ and $s(\tau\setminus\\{v\\})$, where $\tau$ runs over all $(d-1)$-dimensional simplices $\tau\in K$ containing both $u$ and $v$. The next $s_{max}$ lines contain the $s_{max}\times s_{max}$ matrix $N_{pq}$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $s(\tau\setminus \\{u\\})=p$, and $s(\tau\setminus \\{v\\})=q$. (The entries of each row of the matrix are separated by spaces.)
 
 
 ### Program "triples"
