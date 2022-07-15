@@ -205,18 +205,18 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 + A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
-+ The program asks the user whether it should look for distinguished triples or not. (The reason is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold.)
++ The program asks the user whether to look for distinguished triples or not. (The reason is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold, so it is useless to try to apply it when $K$ is not.)
  
 **Output data:** 
 
-+ A file **nu_param.dat**. This file lists the (smallest) representatives of all $G$-orbits of $d$-simplices $\sigma\in K$ with at least one $\nu$-parameter greater than or equal to $d/2$. The first line of the file contains the number $q$ of such $G$-orbits. Each of the next $q$ orbits contains a simplex $\sigma$ (in standard format), and the $\nu$-parameters $\nu_K(\sigma,v_i)$ for $i=1,\ldots,n-d-1$, where $v_1 <\cdots < v_{n-d-1}$ are all the vertices not belonging to $\sigma$. These numbers are separated with spaces, for instance, 
++ A file **nu_param.dat**. This file lists the (smallest) representatives of all $G$-orbits of $d$-simplices $\sigma\in K$ with at least one $\nu$-parameter greater than or equal to $d/2$. The first line of the file contains the number $q$ of such $G$-orbits. Each of the next $q$ orbits contains a simplex $\sigma$ (in the standard format), and the $\nu$-parameters $\nu_K(\sigma,v_i)$ for $i=1,\ldots,n-d-1$, where $v_1 <\cdots < v_{n-d-1}$ are all the vertices not belonging to $\sigma$. These numbers are separated with spaces, for instance, 
 
     ```
     110110011101100 1 1 2 0 4 1
     ```
 
 + If the user has chosen to look for distinguished triples, then the program also produces a file
-**distinguished.dat** containing information on representatives of $G$-orbits of distinguished triples. The description of each distinguished triple $(\Delta_1,\Delta_2,\Delta_3)$ consists of 4 lines. The first 3 lines constain the simplices $\Delta_1$, $\Delta_2$, and $\Delta_3$ (in the standard format), and the last line is for the *type* of the triple. (A distinguished triple has *type 1* if the three simplices $\Delta_1$, $\Delta_2$, and $\Delta_3$ lie in the same $G$-orbit, and has *type 2* otherwise.) Descriptions of different distinguished triples are separated by empty lines. An example of the description of a triple is as follows: 
+**distinguished.dat** containing information on representatives of $G$-orbits of distinguished triples. The description of each distinguished triple $(\Delta_1,\Delta_2,\Delta_3)$ consists of 4 lines. The first 3 lines contain the simplices $\Delta_1$, $\Delta_2$, and $\Delta_3$ (in the standard format), and the last line indicates the *type* of the triple. (A distinguished triple has *type 1* if the three simplices $\Delta_1$, $\Delta_2$, and $\Delta_3$ lie in the same $G$-orbit, and has *type 2* otherwise.) Descriptions of different distinguished triples are separated by empty lines. An example of the description of a triple is as follows: 
  
     ```
     001100110001111010000000000
