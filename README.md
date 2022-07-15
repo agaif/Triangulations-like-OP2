@@ -52,13 +52,17 @@ The following description of the symmetry $G\subset S_n$ should be provided in t
 
 ### Standard format for a simplex
 
-Every simplex is encoded by a row of $n$ binary digits. The $i^{th}$ from the left digit is 1 whenever $i$ is a vertex of the simplex, and is 0 otherwise. For instance, the row 
+We always encode simplices by variables of type `unsigned long int`. 
+
+Inside the program, we number the vertices of a simplicial complex from $0$ to $n-1$ (where $n$ is the number of vertices). A variable `s` of type `unsigned long int` corresponding to a simplex has the $i^{th}$ from the right bit equal to $1$ whenever $i$ is a vertex of the simplex, and $0$ otherwise. (Here bits are also numbered starting from $0$.) For instance, the number
+$1010111_2=87$ encodes the simplex $\\{0,1,2,4,6\\}$.
+
+Nevertheless, in the I/O functions we conveniently reverse the sequence of bits (from left to right) and simultaneously pass to the numbering of vertices (and bits) starting from $1$ rather than from $0$, thus adding $1$ to all the numbers. Besides, we fix that the string of $0$'s and $1$'s encoding a simplex must contain exactly $n$ digits. For instance, the row 
 ```
 111010100000000
 ``` 
-encodes the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex with 15 vertices. We conveniently interpret every such 
-row as a reversed binary notation for a number. For instance, the above row corresponds to the binary number
-$1010111_2=87$. We order the simplices according to the corresponding numbers from smallest to largest in all lists we use.
+in an I/O file will correspond to the number $1010111_2=87$ and hence to the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex on $15$ vertices.
+
 
 ### Standard format for a simplicial complex
 
@@ -298,14 +302,28 @@ yields the permutation `nu` with `nu.seq[0]`, `nu.seq[1]`, and `nu.seq[2]` equal
 
 The third constructor produces the permutation with the given vector `seq`. If the given vector does not provide a permutation, in the obtained object the variable `well_defined` will be `false`.
 
-#### Methods of the class Permutation
+#### Member functions of the class Permutation
 
 ```cpp
 int get_seq (int i) const;      // returns seq[i]
-int degree () const;            // the degree of the permutation i.e. seq.size()
+int degree () const;            // returns the degree of the permutation i.e. seq.size()
 bool is_well_defined () const;  // returns well_defined
-Permutation inv () const;
+Permutation inv () const;       // returns the inverse element of the permutation group
 ```
 
+For the objects of type **Permutation** are defined the overloaded operators `*` (multiplication in $S_d$), `==`, `!=`, and `<` (the lexicographic ordering).
+
+We have one more overloaded operator
+```cpp
+unsigned long int Permutation::operator * (const unsigned long int & s) const;
+```
+The value `nu * s`, where `nu` and `s` are of types `Permutation` and `unsigned long int`, respectively, is obtained from `s` by permuting the `nu.deg()` rightmost bits of `s` according to `nu`. (Here, the rightmost bit has the number $0$, the next one has the number $1$, etc.) The reason is as follows. Recall that we encode a simplex by a variable of type `unsigned long int` so that the $i^{th}$ from the right bit indicates whether the simplex contains the vertex $i$. So `nu * s` corresponds to the action of `nu` on the simplex encoded by `s`. 
 
 ### Library myiofunctions.cpp / myiofunctions.hpp
+
+The library contains mostly I/O functions. Let us list the functions with short descriptions of them.
+
+```cpp
+bool generate_group (ifstream & file, int & degree, int & group_order,
+                     vector <Permutation> & group_elements);
+```                 
