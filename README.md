@@ -266,4 +266,8 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 + Similarly the operations **intersection** and **difference** yield the intersection and the difference (the first minus the second) of the two lists, respectively, which are also written to **triang_res.dat**.
 
+## Common libraries 
 
+### Library permutation.cpp / permutation.hpp
+
+### Library myiofunctions.cpp / myiofunctions.hpp
