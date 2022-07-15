@@ -2,7 +2,7 @@
 //  myiofunctions.cpp
 //  
 //
-//  Created by Александр on 08.06.22.
+//  (C) Alexander A. Gaifullin, 2022
 //
 
 #include "myiofunctions.hpp"
@@ -67,11 +67,12 @@ void print_simplices (ofstream & file, int number_of_vertices,
 }
 
 
-// function for transforming string to unsigned long int encoding a simplex
+// functions for transforming string to unsigned long int encoding a simplex
 unsigned long int string_to_simplex (const string & str) {
     int num;
     return string_to_simplex (num, str);
 }
+
 unsigned long int string_to_simplex (int & num, const string & str) {
     unsigned long int s = 0;
     num = 0;
@@ -112,8 +113,7 @@ int num_vert (int number_of_vertices, unsigned long int s) {
 
 
 
-// function for reading a triangulation from file
-
+// functions for reading a triangulation from file
 bool read_triang (ifstream & file, int number_of_vertices,
                   set <unsigned long int> & orbit_rep) {
     int a, b;

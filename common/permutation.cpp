@@ -2,7 +2,7 @@
 //  permutation.cpp
 //  
 //
-//
+//  (C) Alexander A. Gaifullin, 2022
 //
 
 #include "permutation.hpp"
@@ -87,6 +87,15 @@ int Permutation::get_seq (int i) const { return seq[i]; }
 int Permutation::degree () const { return seq.size(); }
 
 bool Permutation::is_well_defined () const { return well_defined; }
+
+Permutation Permutation::inv () const {
+    vector <int> new_seq;
+    new_seq.resize(seq.size());
+    for (int i = 0; i < seq.size(); i++) {
+        new_seq[seq[i]] = i;
+    }
+    return Permutation (new_seq);
+}
 
 Permutation Permutation::operator * (const Permutation & second_permutation) const {
     vector <int> result;
