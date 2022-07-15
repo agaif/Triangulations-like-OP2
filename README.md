@@ -276,6 +276,24 @@ A permutation $\nu\in S_d$ is stored in the variable
 ```cpp
 vector <int> seq;
 ```
-where `seq[i]` is the value $\nu(i)$. Both `i` and `seq[i]` vary from 0 to $d-1$.
+where `seq[i]` is the value $\nu(i)$. Both `i` and `seq[i]` vary from $0$ to $d-1$. Besides, the class contains the variable
+```cpp
+bool well_defined;
+```
+that points out whether the permutation is well defined.
+
+The class contains three contructors:
+```cpp
+Permutation (int deg);
+Permutation (int deg, string cycle_structure);
+Permutation (vector <int> & seq);
+```
+The first one produces the identity permutation of degree `deg`. 
+
+The second constructor produces the permutation from the cycle notation of it. Note that, in the cycle notation, the elements are numbered from `1` to `deg`, so we subtract 1 from every element. For instance,
+```cpp
+Permutation nu (3, "(12)");
+```
+yields the permutation `nu` with `nu.seq[0]`, `nu.seq[1]`, and `nu.seq[2]` equal to $1$, $0$, and $2$, respectively.
 
 ### Library myiofunctions.cpp / myiofunctions.hpp
