@@ -207,7 +207,8 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 + A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
-+ The program asks the user whether to look for distinguished triples or not. (The reason is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold, so it is useless to try to apply it when $K$ is not.)
++ The program asks the user whether to look for distinguished triples or not. <br/>
+**Remark.** The reason for this request is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold and $n=3d/2+3$. Nevertheless, computing the $\nu$-parameters may be useful in other situations as well.
  
 **Output data:** 
 
