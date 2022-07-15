@@ -385,7 +385,7 @@ This program is an implementation of the algorithm described in Section 4 of [G]
    ```cpp
    int_orbit choose_orbit ( );
    ```
-
+* We introduce the following key concept of **level**. Initially, we are on level 1. Every time we choose a branch orbit **a** and decide to take it, we increase the level by 1. When we finish exploring the branch of taken **a** and passing to the branch in which **a** is removed, we decrease the level by 1 back. So at every moment, the level is equal to the number of branch orbits that are currently chosen to be taken plus 1. Note that we increase the level only when taking a **branch orbit**. If we deduce that some orbit must be taken during examining the adjacency groups, then we take this orbit without increasing the level. So the total number of currently taken orbits is typically much greater than the level.
 
 * The implementation of the algorithm requires
 
