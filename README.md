@@ -446,3 +446,17 @@ The files **simpmax.cpp / simpmax.hpp** contain the class `SimpMax`. An object o
 The program in **check.cpp** realizes the algorithm from Section 5 of [G]. The only technical point that I would like to discuss here is the following. A central role in the algorithm is played by the simplicial complexes
 $$L_{\\rho,\\sigma} =\\mathrm{cost}(\\sigma\\setminus\\rho,\\mathrm{link}(\\rho,K)),$$
 where $\\sigma$ is a maximal (i.e. $d$-dimensional) simplex of $K$ and $\\rho$ is a face of $\\sigma$ of a smaller dimension. We need to check that, for each simplex $\\rho\in K$, at least one of the complexes $L_{\\rho,\\sigma}$ is nonevasive. Nevertheless, it turns out that generating this complexes is an even more time-consuming procedure than checking the nonevasiveness. So it is convenient to generate all the complexes $L_{\\rho,\\sigma}$ with the same maximal simplex $\\sigma$ simultaneously. This is achieved in the following way. Note that each $d$-simplex $\\tau\\ne\\sigma$ contributes with the simplex $\\tau\\setminus\\sigma$ to each of the complexes $L_{\\rho,\\sigma}$ satisfying $\\rho\\subseteq\\sigma\\cap\\tau$, that is, to the complex $L_{\\sigma\\cap\\tau,\\sigma}$ and all the complexes $L_{\\rho,\\sigma}$ with strictly smaller simplices $\\rho$.
+
+To generate all the complexes $L_{\\rho,\\sigma}$ with the given $\\sigma$ we use the following procedure:
+1. We enumerate all the maximal simplices $\\tau\\ne\\sigma$ in $K$ and, for each of them, add the simplex $\\tau\\setminus\\sigma$ to the simplicial complex $L_{\\sigma\\cap\\tau,\\sigma}$ only.
+2. We enumerate all the faces $\\rho\\subset\\sigma$ in **decreasing order** i.e. so that, for any two faces $\\rho\\subset\\rho'$, we consider $\\rho$ after $\\rho'$. This means that, when we consider a face $\\rho$ all simplicial complexes $L_{\\rho',\\sigma}$ with $\\rho'\supsetneq\\rho$ are already constructed. Then we just add to $L_{\\rho,\\sigma}$ all simplices of all the complexes $L_{\\rho\\cup\\{v\\},\\sigma}$, where $v\\in\\sigma\\setminus\\rho$. 
+
+This algorithm is implemented in the function
+```cpp
+void check_faces (unsigned long int s);
+```
+The enumeration of the simplices $\\rho$ in decreasing order is provided by the function
+``cpp
+void prev_subset (unsigned long int & q, const vector <int> & pos);
+```
+
