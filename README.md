@@ -449,14 +449,14 @@ where $\\sigma$ is a maximal (i.e. $d$-dimensional) simplex of $K$ and $\\rho$ i
 
 To generate all the complexes $L_{\\rho,\\sigma}$ with the given $\\sigma$ we use the following procedure:
 1. We enumerate all the maximal simplices $\\tau\\ne\\sigma$ in $K$ and, for each of them, add the simplex $\\tau\\setminus\\sigma$ to the simplicial complex $L_{\\sigma\\cap\\tau,\\sigma}$ only.
-2. We enumerate all the faces $\\rho\\subset\\sigma$ in **decreasing order** i.e. so that, for any two faces $\\rho\\subset\\rho'$, we consider $\\rho$ after $\\rho'$. This means that, when we consider a face $\\rho$ all simplicial complexes $L_{\\rho',\\sigma}$ with $\\rho'\supsetneq\\rho$ are already constructed. Then we just add to $L_{\\rho,\\sigma}$ all simplices of all the complexes $L_{\\rho\\cup\\{v\\},\\sigma}$, where $v\\in\\sigma\\setminus\\rho$. 
+2. We enumerate all the faces $\\rho\\subset\\sigma$ in **decreasing order** i.e. so that, for any two faces $\\rho\\subset\\rho',$ we consider $\\rho$ after $\\rho'$. This means that, when we consider a face $\\rho,$ all simplicial complexes $L_{\\rho',\\sigma}$ with $\\rho'\supsetneq\\rho$ are already constructed. Then we just add to $L_{\\rho,\\sigma}$ all simplices of all the complexes $L_{\\rho\\cup\\{v\\},\\sigma}$, where $v\\in\\sigma\\setminus\\rho$. 
 
 This algorithm is implemented in the function
 ```cpp
 void check_faces (unsigned long int s);
 ```
-The enumeration of the simplices $\\rho$ in decreasing order is provided by the function
-``cpp
+The enumeration of faces $\\rho$ in decreasing order is provided by the function
+```cpp
 void prev_subset (unsigned long int & q, const vector <int> & pos);
 ```
 
