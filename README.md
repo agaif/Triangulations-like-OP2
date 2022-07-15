@@ -381,12 +381,33 @@ This program is an implementation of the algorithm described in Section 4 of [G]
    ```cpp 
    bool examine (int agnum);
    ```
-   After this process stops, we have to branch the algorithm. This means that we choose an indeterminate (i.e.    neither taken nor removed) orbit **a** (which we shall further refer to as the **branch orbit**), and try to first take it and then to remove it. A heuristic algorithm for choosing a branch orbit is provided by the function
+   After this process stops, we have to branch the algorithm. This means that we choose an indeterminate (i.e.    neither taken nor removed) orbit $\\mathfrak{a}$ (which we shall further refer to as the **branch orbit**), and try to first take it and then to remove it. A heuristic algorithm for choosing a branch orbit is provided by the function
    ```cpp
    int_orbit choose_orbit ( );
    ```
-* We introduce the following key concept of **level**. Initially, we are on level 1. Every time we choose a branch orbit **a** and decide to take it, we increase the level by 1. When we finish exploring the branch of taken **a** and passing to the branch in which **a** is removed, we decrease the level by 1 back. So at every moment, the level is equal to the number of branch orbits that are currently chosen to be taken plus 1. Note that we increase the level only when taking a **branch orbit**. If we deduce that some orbit must be taken during examining the adjacency groups, then we take this orbit without increasing the level. So the total number of currently taken orbits is typically much greater than the level.
-
+* We introduce the following key concept of **level**. Initially, we are on level 1. Every time we choose a branch orbit $\\mathfrak{a}$ and decide to take it, we increase the level by 1. When we finish exploring the branch in which $\\mathfrak{a}$ is taken and pass to the branch in which $\\mathfrak{a}$ is removed, we decrease the level by 1 back. So at every moment, the level is equal to the number of branch orbits that are currently chosen to be taken plus 1. Note that we increase the level only when taking a **branch orbit**. If we deduce that some orbit must be taken during examining the adjacency groups, then we take this orbit without increasing the level. So the total number of currently taken orbits is typically much greater than the level.
+* While examining the adjacency groups, we make decisions such as *to take an orbit* or *to remove an orbit* or *to prohibit a pair of orbits* or *to add a requirement* $\\mathfrak{a}\\to\\mathfrak{b}$. Every such decision is made on the assumption that some branch orbits have already been taken. In other words, every decision is taken on some level $k$. When we decrease the level from $k$ to $k-1$, we need to cancel all decisions made on level $k$. Technically, this is organized as follows:
+    + We number all the adjacency orbits and introduce the vector 
+         ```cpp
+         vector <int_level> status;
+         ```
+         where `status[i]`
+         
+      - is equal to $+k$ if the $i^{th}$ orbit is currently taken and the decision to take it was made on level $k$,
+      - is equal to $-k$ if the $i^{th}$ orbit is currently removed and the decision to remove it was made on level $k$,
+      - is equal to $0$ if  the $i^{th}$ orbit is currently neither taken nor removed.
+    
+    + Similarly, we introduce the matrix
+        ```cpp
+        vector < vector <int_level> > relative_status;
+        ```
+        where `relative_status[i][j]`
+         
+      - is equal to $+k$ if the $i^{th}$ orbit requires the $j^{th}$ orbit the decision was made on level $k$,
+      - is equal to $-k$ if the $i^{th}$ orbit prohibits the $j^{th}$ orbit the decision was made on level $k$,
+      - is equal to $0$, otherwise.
+    + Every time we decrease the level from $k$ to $k-1$, we change to $0$ all values `status[i]` and `relative_status[i][j]` that are equal to $\pm k$. 
+    
 * The implementation of the algorithm requires
 
 ## Program "check"
