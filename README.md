@@ -230,11 +230,11 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 **Input data:**
 
 + A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
-+ A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
++ A file **triang.dat** containing the list of representatives of a set of $G$-orbits of simplices. (The first line contains the number of $G$-orbits of $K$; the following lines contain the representatives in the standard format.)
 
 **Output data:**
 
-+ A file **triang_all.dat**. The first line contains the total number of $d$-simplices of $K$; the following lines contain the list of all the $d$-simplices in the standard format. 
++ A file **triang_all.dat**. The first line contains the total number of simplices in the given $G$-orbits; the following lines contain the list of all these simplices in the standard format. 
 
 ### Program "operations"
 
