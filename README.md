@@ -82,7 +82,7 @@ The file **triang.dat** does not contain a description of the group $G$. So, in 
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,  
 `16 100386` <br/> 
      
@@ -128,7 +128,7 @@ after which follows the description of the pseudomanifold in the standard format
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a pure simplicial complex $K$ in the standard format.
 
 **Output data:**
@@ -152,7 +152,7 @@ The program **check** says whether it has succeeded to check that $K$ is a combi
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a pure simplicial complex $K$ in the standard format.
 + A file **permutation.dat** consisting of a single line that contains a permutation $h$ in cycle notation. (Cycles are surrounded by round brackets, vertices in each cycle are separated by spaces.)
 
@@ -171,7 +171,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
 
 **Output data:**
@@ -192,7 +192,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
 + A file **edge.dat** containing two (different) numbers $u$ and $v$ separated by a space. These are numbers of vertices, so they must be in the range  from 1 to the total number of vertices $n$. 
 
@@ -205,7 +205,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
 + The program asks the user whether to look for distinguished triples or not. (The reason is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold, so it is useless to try to apply it when $K$ is not.)
  
@@ -231,7 +231,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Input data:**
 
-+ A file **symmetry.dat** describing the symmetry group $G$ in the standard format.
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** containing the list of representatives of a set of $G$-orbits of simplices. (The first line contains the number of $G$-orbits of $K$; the following lines contain the representatives in the standard format.)
 
 **Output data:**
