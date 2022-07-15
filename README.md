@@ -368,6 +368,27 @@ The function reads from `file` a simplicial complex in the standard format (see 
 
 This program is an implementation of the algorithm described in Section 4 of [G]. We are not going to duplicate this description here. Also we are not going to duplicate here multiple comments in the files **find.cpp** and **find.hpp**. So here we shall give only several general comments on technical issues concerning the implementation of the algorithm. 
 
+* The algorithm in Section 4 of [G] consists of two Stages. 
+   + *Stage 1: Initial generation of admissible orbits and adjacency groups and initial prohibition of certain pairs of orbits*. This stage is governed by the function
+        ```cpp
+         void generate_orbits_and_adjacency_groups ();
+        ```
+   + *Stage 2: Selection of orbits*. This stage is governed by the function
+        ```cpp
+        void selection ();
+        ```
+* The selection of orbits looks roughly as follows. We examine one-by-one the adjacency groups trying to improve our knowledge on orbits that have to be taken or removed and pairs of orbits that have to be prohibited or required. The examination of an adjacency group is governed by the function
+   ```cpp 
+   bool examine (int agnum);
+   ```
+   After this process stops, we have to branch the algorithm. This means that we choose an indeterminate (i.e.    neither taken nor removed) orbit **a** (which we shall further refer to as the **branch orbit**), and try to first take it and then to remove it. A heuristic algorithm for choosing a branch orbit is provided by the function
+   ```cpp
+   int_orbit choose_orbit ( );
+   ```
+
+
+* The implementation of the algorithm requires
+
 ## Program "check"
 
-The program consists of two **cpp** files **check.cpp** and **simpmax.cpp** and the header file **simpmax.hpp**. 
+The program consists of two **cpp** files **check.cpp** and **simpmax.cpp** and a header file **simpmax.hpp**. 
