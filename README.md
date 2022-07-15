@@ -240,7 +240,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 **Input data:**
 
-+ Files **triang1.dat** and  **triang2.dat** describing two $d$-dimensional pure simplicial complexes $K_1$ and $K_2$, respectively (in the standard format). The program works correctly only if the complexes $K_1$ and $K_2$ have equal dimensions and their descriptions correspond to the same symmetry group $G$. (Nevertheless, the description of the group $G$ is not needed.) 
++ Files **triang1.dat** and  **triang2.dat**. The first line of each of these two files contains a single number indicating the number of subsequent lines. Then follows an arbitrary set of strings (one per line) without spaces or tabulations or empty lines.  
 + The user is asked to choose the type of the operation:
 
     ```
@@ -253,10 +253,14 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
     
 **Output data:**
 
-+ For the operation **compare** the program gives one of the four answers: <br/>
++ For the operation **compare**, the program gives one of the four answers: <br/>
 `The complexes coincide` <br/>
 `The first complex is contained in the second one` <br/>
 `The second complex is contained in the first one` <br/>
 `Neither of the complexes is contained in the other one` <br/>
 
-+ For any of the other three operations, the reslting simplicial complex is written to the file **triang_res.dat**. Note that the operations **intersection** and **difference** are understood in the sense of pure $d$-dimensional complexes. This means that they yield the simplicial complexes consisting of all $d$-simplices $\sigma\in K_1$ that belong (respectively, do not belong) to $K_2$, and all their faces.
++ For the operation **union**, the program units the two lists of strings (removing repetitions) and writes the result to the file **triang_res.dat**. (Again, the first line contains the number of subsequent strings, and then follows the list of strings.) 
+
++ Similarly the operations **intersection** and **difference** yield the intersection and the difference (the first minus the second) of the two lists, respectively, which are also written to **triang_res.dat**.
+
+
