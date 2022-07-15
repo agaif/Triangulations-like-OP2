@@ -326,4 +326,40 @@ The library contains mostly I/O functions. Let us list the functions with short 
 ```cpp
 bool generate_group (ifstream & file, int & degree, int & group_order,
                      vector <Permutation> & group_elements);
-```                 
+```       
+
+The function reads from `file` a permutation group $G\subset S_d$ in the standard format (see above). All elements of the group $G$ are written to the vector `group_elements` in some order. (Note that we pass from the numbering of the vertices starting from $1$ in `file` to the numbering of the vertices starting from $0$ in the objects of class **Permutation**.) The variables `degree` and `group_order` are set to be equal to $d$ and to $|G|$, respectively.  
+
+```cpp
+void print_simplices (ofstream & file, int number_of_vertices,
+                      const set <unsigned long int> & simplices);
+```
+The function writes to `file` the set of simplices `simplices` in the standard standard. Recall that this means that the number `simplices.size()` is written to the first line, and each of the following lines contains a sequence of binary digits encoding the corresponding simplex (i.e. the `number_of_vertices` rightmost bits of `simplices[i]` in the reversed order). The parameter `number_of_vertices' must be equal to the total number of vertices of the simplicial complex.     
+
+
+```cpp
+unsigned long int string_to_simplex (int & num, const string & str);
+unsigned long int string_to_simplex (const string & str);
+```
+The function transforms a string of $0$'s and $1$'s to the binary number of type `unsigned long int` encoding the corresponding simplex. (Recall that this is done by reversing the sequence.) The variable `num` (if present) is set to be equal to the number of vertices of the simplex i.e. to the number of $1$'s in `str`.
+
+
+```cpp
+string simplex_to_string (int number_of_vertices, unsigned long int s);
+```
+The functions transforms a varible `s` of type `unsigned long int` encoding a simplex to the string describing this simplex in the standard I/O format. Recall that this is done by reversing the sequence of sequence of bits of `s` and reducing its length to `number_of_vertices`, where `number_of_vertices` must be equal to the number of vertices of the simplicial complex. 
+
+
+```cpp
+int num_vert (int number_of_vertices, unsigned long int s);
+```
+The function computes the number of vertices of a simplex `s` in a simplicial  with `number_of_vertices` vertices.
+
+```cpp
+bool read_triang (ifstream & file, int number_of_vertices,
+                  int & number_of_vertices_in_simplex,
+                  int & number_of_orbits, set <unsigned long int> & orbit_rep);
+bool read_triang (ifstream & file, int number_of_vertices,
+                  set <unsigned long int> & orbit_rep);
+```
+The function reads from `file` a simplicial complex in the standard format (see above). The parameter `number_of_vertices` must be equal to the number of vertices of the complex. The simplices in `file` are transformed to the type `unsigned long int` and joined into the set `orbit_rep`. The variables `number_of_vertices_in_simplex` and `number_of_orbits` (if present) are set tobe equal to the number of vertices of each simplex (all these numbers are supposed to be equal to each other) and to the number of simplices in `file`, respectively.
