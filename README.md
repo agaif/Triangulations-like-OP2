@@ -368,7 +368,7 @@ The function reads from `file` a simplicial complex in the standard format (see 
 
 This program is an implementation of the algorithm described in Section 4 of [G]. We are not going to duplicate this description here. Also we are not going to duplicate here multiple comments in the files **find.cpp** and **find.hpp**. So here we shall give only several general comments on technical issues concerning the implementation of the algorithm. 
 
-* The algorithm in Section 4 of [G] consists of two Stages. 
+* The algorithm in Section 4 of [G] consists of two stages: 
    + *Stage 1: Initial generation of admissible orbits and adjacency groups and initial prohibition of certain pairs of orbits*. This stage is governed by the function
         ```cpp
          void generate_orbits_and_adjacency_groups ();
@@ -417,6 +417,19 @@ This program is an implementation of the algorithm described in Section 4 of [G]
     #define int_orbit unsigned short int
     ```
     to store the numbers of admissible orbits. This works correctly unless the number of admissible orbits  is greater than $65535$. Otherwise, one needs to replace `unsigned short int` with  `unsigned long int`. 
+
+Finally, let us discuss the result of the implementation of the algorithm in the most important for us case 
+$$m=27,\\qquad d =16,\\qquad G=G_{351},\\qquad N=100386.$$
+To perform computation in this case, one needs to submit to the program the following input files, **symmetry_group.dat**
+```
+27
+(1 2 3 4 5 6 7 8 9 10 11 12 13)(14 15 16 17 18 19 20 21 22 23 24 25 26)
+(1 14 27)(2 4 10)(3 22 13)(5 6 21)(7 25 11)(8 19 18)(9 16 26)(12 20 24)(15 23 17)
+```
+and **dimnum.dat**
+```
+16 100386
+```
 
 ## Program "check"
 
