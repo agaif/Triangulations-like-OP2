@@ -270,4 +270,12 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 
 ### Library permutation.cpp / permutation.hpp
 
+The library consists of a single class **Permutation** whose objects are permutations in the group $S_d$ for certain $d$. Note that inside the program we always interpret $S_d$ as the permutation group of the set $\\{0,\\ldots,d-1\\}$. Nevertheless, in I/O functions we always subtract 1/add 1 to all elements so that to obtain permutations of the set $\\{1,\\ldots,d\\}$.
+
+A permutation $\nu\in S_d$ is stored in the variable 
+```cpp
+vector <int> seq;
+```
+where `seq[i]` is the value $\nu(i)$. Both `i` and `seq[i]` vary from 0 to $d-1$.
+
 ### Library myiofunctions.cpp / myiofunctions.hpp
