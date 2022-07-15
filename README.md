@@ -296,4 +296,10 @@ Permutation nu (3, "(12)");
 ```
 yields the permutation `nu` with `nu.seq[0]`, `nu.seq[1]`, and `nu.seq[2]` equal to $1$, $0$, and $2$, respectively.
 
+The third constructor produces the permutation with the given vector `seq`.
+
+#### Methods of the class Permutation
+
+
+
 ### Library myiofunctions.cpp / myiofunctions.hpp
