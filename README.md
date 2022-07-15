@@ -408,7 +408,15 @@ This program is an implementation of the algorithm described in Section 4 of [G]
       - is equal to $0$, otherwise.
     + Every time we decrease the level from $k$ to $k-1$, we change to $0$ all values `status[i]` and `relative_status[i][j]` that are equal to $\pm k$. 
     
-* The implementation of the algorithm requires
+* We typically have about $10^5$ admissible orbits. Hence the matrix `relative_status` contains about $10^{10}$ entries. This is why storing this matrix requires a lot of memory. To save memory, we use the type `int_level = signed char` for the elements of this matrix. However, this may cause a mistake if the level becomes greater than $127$. This has never happened in any examples that I have considered. Moreover, the level has been never greater than $20$. Nevertheless, if in some example the level became equal to $127$, one would need to change the definition of the type in the beginning of **find.hpp**
+   ```cpp
+   #define int_level signed char
+   ```
+    say, to `signed short`. <br/> For the same reason to save memory, we use the type 
+    ```cpp
+    #define int_orbit unsigned short int
+    ```
+    to store the numbers of admissible orbits. This works correctly unless the number of admissible orbits  is greater than $65535$. Otherwise, one needs to replace `unsigned short int` with  `unsigned long int`. 
 
 ## Program "check"
 
