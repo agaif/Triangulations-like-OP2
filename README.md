@@ -430,6 +430,12 @@ and **dimnum.dat**
 ```
 16 100386
 ```
+The result of the work of the program is the list of $24$ weak pseudomanifolds, which can be checked to be combinatorial manifolds by the program **check**. Note that the combinatorial manifolds $K_1$, $K_2$, $K_3$, and $K_4$ from Theorem 2.2 in [G] have the numbers $21$, $12$, $11$, and $10$ in this list, respectively, and the other $20$ combinatorial manifolds are obtained from these four by the action of the sign reversal $S$ and the Frobenius automorphism $F$,
+```
+S = (1 14)(2 15)(3 16)(4 17)(5 18)(6 19)(7 20)(8 21)(9 22)(10 23)(11 24)(12 25)(13 26)
+F = (2 4 10)(3 7 6)(5 13 11)(8 9 12)(15 17 23)(16 20 19)(18 26 24)(21 22 25)
+```
+The latter can be checked by means of the program **permute**.
 
 ## Program "check"
 
