@@ -363,3 +363,11 @@ bool read_triang (ifstream & file, int number_of_vertices,
                   set <unsigned long int> & orbit_rep);
 ```
 The function reads from `file` a simplicial complex in the standard format (see above). The parameter `number_of_vertices` must be equal to the number of vertices of the complex. The simplices in `file` are transformed to the type `unsigned long int` and joined into the set `orbit_rep`. The variables `number_of_vertices_in_simplex` and `number_of_orbits` (if present) are set tobe equal to the number of vertices of each simplex (all these numbers are supposed to be equal to each other) and to the number of simplices in `file`, respectively.
+
+## Program "find"
+
+This program is an implementation of the algorithm described in Section 4 of [G]. We are not going to duplicate this description here. Also we are not going to duplicate here multiple comments in the files **find.cpp** and **find.hpp**. So here we shall give only several general comments on technical issues concerning the implementation of the algorithm. 
+
+## Program "check"
+
+The program consists of two **cpp** files **check.cpp** and **simpmax.cpp** and the header file **simpmax.hpp**. 
