@@ -24,7 +24,8 @@ Checks that the given $G$-invariant simplicial complex $K$ is a combinatorial ma
 This program, for a given $d$-dimensional simplicial complex $K$, computes the distribution of the numbers $s(\rho)$ for $(d-2)$-simplices $\rho$, where $s(\rho)$ is the number of $d$-simplices $\sigma\in K$ containing $\rho$. It is used to produce Table 4 in [G]. 
 8. **num_neighbors_pairs**: <br/>
 This program, for a given $d$-dimensional simplicial complex $K$ and two given vertices $u$ and $v$ of it, computes the matrix $(N_{pq})$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $s(\tau\setminus \\{u\\})=p$, and $s(\tau\setminus \\{v\\})=q$. 
-9. **triples**: computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex and, when $K$ is a combinatorial manifold, finds all distinguished subcomplexes, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices.
+9. **triples**: <br/>
+ This program computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex. Besides, when $K$ is a combinatorial manifold, it finds all distinguished subcomplexes, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices.
 10. **allsimp**: given a symmetry group $G$ and a list of representatives of $G$-orbits of simplices produces the list of all simplices in these orbits.
 11. **operations**: performs basic operations (compairing, union, intersection, difference) for simplicial complexes.  
 
