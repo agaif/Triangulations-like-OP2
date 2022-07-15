@@ -123,7 +123,9 @@ int main() {
             ofile << i << " " << number_occurrences [i] << endl;
         }
     }
-
+    ofile.close();
+    
+    
     return 0;
 }
  
