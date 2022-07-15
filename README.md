@@ -440,3 +440,11 @@ The latter can be checked by means of the program **permute**.
 ## Program "check"
 
 The program consists of two **cpp** files **check.cpp** and **simpmax.cpp** and a header file **simpmax.hpp**. 
+
+The files **simpmax.cpp / simpmax.hpp** contain the class `SimpMax`. An object of this class is a simplicial complex presented by the set of maximal simplices only without storing the simplices that are not maximal. We will conveniently consider all simplicial complexes associated with the initial given simplicial complex $K$ (such as links and contrastars of simplices, etc.) as complexes on the same vertex set $\\{1,\\ldots,n\\}$. Assuming this we allow *ghost vertices* i.e. vertices that are not contained in any simplex of the complex. For instance, all vertices of the simplex $\\sigma$ automatically become ghost vertices for $\\mathrm{link}(\\sigma,K)$. All member functions of the class `SimpMax` are described in comments in the file **simpmax.hpp**. We will not repeate these descriptions here.
+
+The program in **check.cpp** realizes the algorithm from Section 5 of [G]. The only technical point that I would like to discuss here is the following. A central role in the algorithm is played by the simplicial complexes
+$$ 
+L_{\\rho,\\sigma} =\\mathrm{cost}\\bigl(\\sigma\\setminus\\rho,\\mathrm{link}(\\rho,K)\\bigr),
+$$
+where $\\sigma$ is a maximal (i.e. $d$-dimensional) simplex of $K$ and $\\rho$ is a face of $\\sigma$ of a smaller dimension. We need to check that, for each simplex $\\rho\in K$, at least one of the complexes $L_{\\rho,\\sigma}$ is nonevasive. Nevertheless, it turns out that generating this complexes is an even more time-consuming procedure than checking the nonevasiveness. So it is convenient to generate all the complexes $L_{\\rho,\\sigma}$ with the same maximal simplex $\\sigma$ simultaneously. This is achieved in the following way. Note that each $d$-simplex $\\tau\\ne\\sigma$ contributes with the simplex $\\tau\\setminus\\sigma$ to each of the complexes $L_{\\rho,\\sigma}$ satisfying $\\rho\\subseteq\\sigma\\cap\\tau$, that is, to the complex $L_{\\sigma\\cap\\tau,\\sigma}$ and all the complexes $L_{\\rho,\\sigma}$ with strictly smaller simplices $\\rho$.
