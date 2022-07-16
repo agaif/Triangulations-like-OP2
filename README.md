@@ -27,7 +27,7 @@ This program, for a given $d$-dimensional simplicial complex $K$, computes the d
 5. **num_neighbors_pairs**: <br/>
 This program, for a given $d$-dimensional simplicial complex $K$ and two given vertices $u$ and $v$ of it, computes the matrix $(N_{pq})$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $s(\tau\setminus \\{u\\})=p$, and $s(\tau\setminus \\{v\\})=q$. It was used to produce Tables 6-10 in [G]. 
 6. **triples**: <br/>
- This program computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex. Besides, when $K$ is a combinatorial manifold, it finds all distinguished subcomplexes, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices. Computations by means of this program yield Propositions 8.2 and 8.4 in [G].
+ This program computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex (see Section 8 of [G] for the definition of $\nu$-parameters). Besides, when $K$ is a combinatorial manifold, it finds all distinguished subcomplexes, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices. Computations by means of this program yield Propositions 8.2 and 8.4 in [G].
 7. **allsimp**: <br/>
 This auxiliary script produces the list of all simplices in some $G$-invariant set from a given symmetry group $G$ and a list of representatives of $G$-orbits of the simplices in this set. 
 8. **operations**: <br/>
@@ -212,7 +212,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 + A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **triang.dat** describing a $d$-dimensional pure simplicial complex $K$ in the standard format.
 + The program asks the user whether to look for distinguished triples or not. <br/>
-**Remark.** The reason for this request is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold and $n=3d/2+3$. Nevertheless, computing the $\nu$-parameters may be useful in other situations as well.
+**Remark.** The reason for this question is that the procedure for finding the distinguished triples works correctly only when $K$ is a combinatorial manifold and $n=3d/2+3$. Nevertheless, computing the $\nu$-parameters may be useful in other situations as well.
  
 **Output data:** 
 
