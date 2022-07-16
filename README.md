@@ -66,7 +66,7 @@ in an I/O file will correspond to the number $1010111_2=87$ and hence to the sim
 
 ### Standard format for a simplicial complex
 
-We typically work with rather large $G$-invariant simplicial complexes.
+We typically work with rather large $G$-invariant pure simplicial complexes.
 
 The file describing a simplicial complex is usually called **triang.dat**.
 
