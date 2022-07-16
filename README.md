@@ -412,7 +412,7 @@ This program is an implementation of the algorithm described in Section 4 of [G]
    ```cpp
    #define int_level signed char
    ```
-    say, to `signed short`. <br/> For the same reason to save memory, we use the type 
+    say, to `signed short`. <br/> For the same reason to save memory, we use the type `int_orbit` defined by 
     ```cpp
     #define int_orbit unsigned short int
     ```
