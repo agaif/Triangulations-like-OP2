@@ -61,7 +61,7 @@ Nevertheless, in the I/O functions we conveniently reverse the sequence of bits 
 ```
 111010100000000
 ``` 
-in an I/O file will correspond to the number $1010111_2=87$ and hence to the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex on $15$ vertices.
+in an I/O file will correspond to the number $1010111_2=87$ and hence to the simplex $\\{1,2,3,5,7\\}$ in a simplicial complex on the $15$ vertices $\\{1,\\ldots,15\\}$.
 
 
 ### Standard format for a simplicial complex
