@@ -20,7 +20,6 @@ using namespace std;
 
 #define ifile_name_group "symmetry_group.dat"
 #define ifile_name_triang "triang.dat"
-#define ifile_name_edge "edge.dat"
 #define ofile_name "result.dat"
 
 int group_order;
