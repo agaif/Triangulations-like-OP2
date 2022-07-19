@@ -4,7 +4,7 @@
 
 This repository contains C++ programs implementing algorithms for the paper 
 
-Alexander A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", arXiv???
+Alexander A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", [arXiv:2207.08507](https://arxiv.org/abs/2207.08507)
 
 which is further referred to as [G].
 
