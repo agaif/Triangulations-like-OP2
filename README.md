@@ -384,7 +384,7 @@ Descriptions of different isomorphism groups are separated by empty lines.
   000100101111111
   ```
   Descriptions of different vertices are separated by empty lines.
-+ A file **edges.dat** containing information about edges of $\mathcal{G}_G(K_0)$. The $i^{\th}$ line contain information about edges from edges from the $i^{\th}$ vertex in the following format:
++ A file **edges.dat** containing information about edges of $\mathcal{G}_G(K_0)$. The $i^{th}$ line contain information about edges from edges from the $i^{th}$ vertex in the following format:
   ```
   i: <numbers of vertices connected by edges with i separated by spaces>
   ```
@@ -394,6 +394,17 @@ Descriptions of different isomorphism groups are separated by empty lines.
   3: 3(si) 3 3 1 5 5 6
   ```
   means that vertex 3 is connected with itself by one self-inverse loop and one non-self-inverse loop, is connected with vertex 5 by two edges and with each of the vertices 1 and 6 by one edge.
+
+### Program "triple_flip_graph_random"
+
+**Input data:** The same as for the program **triple_flip_graph**.
+
+**Output data:**
++ Files **cert1.dat**, **cert2.dat**, **cert3.dat**, **cert5.dat**, **cert6.dat**, **cert7.dat**, **cert12.dat**, and **cert60.dat**. Each of these files contains the list of different certificates of vertices $K$ (with the indicated order of the symmetry group of $K$) that are visited by the trajectory of the random walk. Duplicate certificates are not recorded.
++ File **sequence.dat** containing information about equivariant triple flips made. For each equivariant triple flip, we record only one (the smallest) 4-simplex of the corresponding distinguished triple.
+  **Remark.** The program never stops itself. It should be interrupted.
+
+  
 ## Common libraries 
 
 ### Library permutation.cpp / permutation.hpp
