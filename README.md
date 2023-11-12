@@ -268,7 +268,7 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 **Input data:**
 
 + A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
-+ A file **triang.dat** containing the list of representatives of a set of $G$-orbits of simplices. (The first line contains the number of $G$-orbits of $K$; the following lines contain the representatives in the standard format.)
++ A file **triang.dat** containing the list of representatives of a set of $G$-orbits of simplices. (The first line contains the number of $G$-orbits of maximal simplices of $K$; the following lines contain the representatives in the standard format.)
 
 **Output data:**
 
@@ -300,6 +300,32 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
 + For the operation **union**, the program units the two lists of strings (removing repetitions) and writes the result to the file **triang_res.dat**. (Again, the first line contains the number of subsequent strings, and then follows the list of strings.) 
 
 + Similarly the operations **intersection** and **difference** yield the intersection and the difference (the first minus the second) of the two lists, respectively, which are also written to **triang_res.dat**.
+
+### Program "isomorphism_groups"
+
+**Input data:**
+
++ A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
++ A file **triangulations.dat** containing the lists of representatives of $G$-orbits of maximal simplices for a 15-vertex pure 8-dimensional simplicial complex. The format for this file is exactly as the output format of the program **find**.
+
+**Output data:**
++ A file **result.dat** containing the list of groups, each consisting of isomorphic simplicial complexes. Each group of isomorphic complexes is described in the following format. The first six lines are the numbers $m_3,\ldots,m_8$ (one per line) of the corresponding distribution $\mathbf{m}(K)$ (see Subsection 8.4 of [G3]). Then follows a line consisting of a single symbol `=`. The last line contain numbers of triangulations (with respect to their order in the file **triangulations.dat**) that belong to this isomorphism class. An example of such description is as follows:
+  ```
+  1105
+  1710
+  1070
+  290
+  45
+  10
+  =
+  1 5 17 29 41 53 65 69 73 77
+  ```
+### Program "symm_group"
+
+**Input data:**
++ A file **triang.dat** containing the list of all maximal simplices of a 15-vertex 8-dimensional pure simplicial complex $K$. (The first line contains the total number of 8-simplices; the following lines contain the 8-simplices in the standard format.)
+**Output data:**
++ A file **symm_group.dat**. The first line contains the order of the symmetry group of $K$. The following lines contain all non-trivial elements of $G$ in the standard format.
 
 ## Common libraries 
 
