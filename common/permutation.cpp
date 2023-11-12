@@ -33,6 +33,7 @@ Permutation::Permutation (int deg, string str) {
     int pos = 0;
     
     while (pos < str.size()) {
+        if (str[pos] == '\r' || str[pos] == '\n') break;
         if (str[pos] == ' ') {
             ++pos;
             continue;
@@ -139,4 +140,24 @@ bool Permutation::operator < (const Permutation & second_permutation) const {
     return false;
 }
 
+string Permutation::cycle_structure() {
+    string str;
+    set <int> taken;
+    for (int i = 0; i < seq.size(); i++) {
+        if (seq[i] == i || taken.count(i) != 0) continue;
+        str = str + "(" + to_string(i+1);
+        for (int j = seq[i]; j != i; j = seq[j]) {
+            taken.insert(j);
+            str = str + " " + to_string(j+1);
+        }
+        str = str + ")";
+    }
+    return str;
+}
 
+bool Permutation::is_trivial() {
+    for (int i = 0; i < seq.size(); i++) {
+        if (seq[i] != i) return false;
+    }
+    return true;
+}

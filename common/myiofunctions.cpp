@@ -57,6 +57,54 @@ bool generate_group (ifstream & file, int & degree, int & group_order,
 }
 
 
+// function for reading from file and generating the symmetry group
+bool generate_group (ifstream & file, int & degree, int & group_order,
+                     set <Permutation> & group_elements) {
+
+    group_elements.clear();
+    string str;
+    getline (file, str);
+    while (str[0] == ' ') str.erase(0,1);
+    degree = 0;
+    while ('0' <= str[0] && str[0] <= '9') {
+        degree = 10 * degree + (str[0] - '0');
+        str.erase(0,1);
+    }
+
+    set <Permutation> generators;
+
+
+    Permutation e (degree);
+
+    while(getline(file,str)) {
+        Permutation g (degree, str);
+        if ( ! g.is_well_defined() ) {return false;}
+        if ( g != e ) {
+            generators.insert(g);
+        }
+    }
+
+    vector <Permutation> vec_of_group_elements;
+    vec_of_group_elements.push_back(e);
+    group_elements.insert(e);
+
+    int i = 0;
+    while (i < vec_of_group_elements.size()) {
+        for (auto g : generators) {
+            Permutation h = g * vec_of_group_elements[i];
+            if ( group_elements.count(h) == 0 ) {
+                vec_of_group_elements.push_back(h);
+                group_elements.insert(h);
+            }
+        }
+        ++i;
+    }
+
+    group_order = group_elements.size();
+
+    return true;
+}
+
 // functions for writing simplices to file
 void print_simplices (ofstream & file, int number_of_vertices,
                       const set <unsigned long int> & simplices) {
@@ -65,6 +113,17 @@ void print_simplices (ofstream & file, int number_of_vertices,
         file << simplex_to_string (number_of_vertices, s) << endl;
     }
 }
+
+// functions for writing simplices to file
+void print_simplices (ofstream & file, int number_of_vertices,
+                      const vector <unsigned long int> & simplices) {
+    file << simplices.size() << endl;
+    for (auto s : simplices) {
+        file << simplex_to_string (number_of_vertices, s) << endl;
+    }
+}
+
+
 
 
 // functions for transforming string to unsigned long int encoding a simplex
@@ -144,5 +203,36 @@ bool read_triang (ifstream & file, int number_of_vertices,
     return true;
 }
 
+// functions for reading a triangulation from file
+bool read_triang (ifstream & file, int number_of_vertices,
+                  vector <unsigned long int> & orbit_rep) {
+    int a, b;
+    return read_triang (file, number_of_vertices, a, b, orbit_rep);
+}
 
+bool read_triang (ifstream & file, int number_of_vertices,
+                  int & number_of_vertices_in_simplex,
+                  int & number_of_orbits, vector <unsigned long int> & orbit_rep) {
+    string str;
+
+    getline(file, str);
+    number_of_orbits = stoi (str);
+
+    for (int i = 0; i < number_of_orbits; i++) {
+        getline(file, str);
+        int num;
+        unsigned long int s = string_to_simplex (num, str);
+        if (num != number_of_vertices) return false;
+        orbit_rep.push_back (s);
+        /*
+        if (i == 0) {
+            number_of_vertices_in_simplex = num_vert (number_of_vertices, s);
+        } else {
+            if (num_vert (number_of_vertices, s) != number_of_vertices_in_simplex) return false;
+        }
+        */
+    }
+
+    return true;
+}
 

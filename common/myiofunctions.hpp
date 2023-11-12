@@ -19,10 +19,14 @@ using namespace std;
 // function for reading from file and generating the symmetry group
 bool generate_group (ifstream & file, int & degree, int & group_order,
                      vector <Permutation> & group_elements);
+bool generate_group (ifstream & file, int & degree, int & group_order,
+                     set <Permutation> & group_elements);
 
 // functions for writing simplices to file
 void print_simplices (ofstream & file, int number_of_vertices,
                       const set <unsigned long int> & simplices);
+void print_simplices (ofstream & file, int number_of_vertices,
+                      const vector <unsigned long int> & simplices);
 
 // functions for transforming string of 0's and 1's to unsigned long int encoding a simplex
 unsigned long int string_to_simplex (int & num, const string & str);
@@ -41,6 +45,11 @@ bool read_triang (ifstream & file, int number_of_vertices,
                   int & number_of_orbits, set <unsigned long int> & orbit_rep);
 bool read_triang (ifstream & file, int number_of_vertices,
                   set <unsigned long int> & orbit_rep);
+bool read_triang (ifstream & file, int number_of_vertices,
+                  int & number_of_vertices_in_simplex,
+                  int & number_of_orbits, vector <unsigned long int> & orbit_rep);
+bool read_triang (ifstream & file, int number_of_vertices,
+                  vector <unsigned long int> & orbit_rep);
 
 
 #endif /* myiofunctions_hpp */

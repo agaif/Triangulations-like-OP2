@@ -32,6 +32,8 @@ public:
     bool operator == (const Permutation & sec) const;
     bool operator != (const Permutation & sec) const;
     bool operator < (const Permutation & sec) const;
+    string cycle_structure();
+    bool is_trivial();
 };
 
 
