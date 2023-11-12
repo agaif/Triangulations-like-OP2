@@ -443,7 +443,9 @@ The third constructor produces the permutation with the given vector `seq`. If t
 int get_seq (int i) const;      // returns seq[i]
 int degree () const;            // returns the degree of the permutation i.e. seq.size()
 bool is_well_defined () const;  // returns well_defined
-Permutation inv () const;       // returns the inverse element of the permutation group
+Permutation inv () const;       // returns the inverse permutation 
+string cycle_structure();       // returns the cycle structure of the permutation (for the output)
+bool is_trivial();              // returns whether the permutation is trivial
 ```
 
 For the objects of type **Permutation** are defined the overloaded operators `*` (multiplication in $S_d$), `==`, `!=`, and `<` (the lexicographic ordering).
