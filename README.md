@@ -320,12 +320,23 @@ Second, if $h$ belongs to the normalizer of $G$, then $h(K)$ is again a $G$-inva
   =
   1 5 17 29 41 53 65 69 73 77
   ```
+Descriptions of different isomorphism groups are separated by empty lines.
+
 ### Program "symm_group"
 
 **Input data:**
 + A file **triang.dat** containing the list of all maximal simplices of a 15-vertex 8-dimensional pure simplicial complex $K$. (The first line contains the total number of 8-simplices; the following lines contain the 8-simplices in the standard format.)
 **Output data:**
 + A file **symm_group.dat**. The first line contains the order of the symmetry group of $K$. The following lines contain all non-trivial elements of $G$ in the standard format.
+
+### Program "triple_flip_graph"
+
+**Input data:**
++ A file **symmetry_group.dat** describing a group $G$ in the standard format.
++ A file **triang.dat** containing the list of all maximal simplices (**not** representatives of $G$-orbits) of a 15-vertex 8-manifold complex $K$ like the quaternionic projective plane. (The first line contains the total number of 8-simplices, which must be 490; the following lines contain the 8-simplices in the standard format.)
+**Note:** The group $G$ must be contained in the symmetry group of $K$ but  may not coincide with it.
+
+**Output data:**
 
 ## Common libraries 
 
