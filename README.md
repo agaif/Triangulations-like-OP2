@@ -510,6 +510,94 @@ bool read_triang (ifstream & file, int number_of_vertices,
 ```
 The function reads from `file` a simplicial complex in the standard format (see above). The parameter `number_of_vertices` must be equal to the number of vertices of the complex. The simplices in `file` are transformed to the type `unsigned long int` and joined into the set `orbit_rep`. The variables `number_of_vertices_in_simplex` and `number_of_orbits` (if present) are set tobe equal to the number of vertices of each simplex (all these numbers are supposed to be equal to each other) and to the number of simplices in `file`, respectively.
 
+### Library triang.cpp / triang.hpp
+
+This is a rather specific library for working with 15-vertex 8-dimensional simplicial complexes only. It consists of two classes **Triple** and **Triang**.
+
+#### Class Triple
+
+Objects of class **Triple** are distinguished triples $(\Delta_0,\Delta_1,\Delta_2)$ of 4-simplices. They are stored in the vector variable
+```cpp
+unsigned long int delta[3];
+```
+The simplices of a distinguished triple are defined up to cyclic permutation. We always choose `delta[0]` to be the smallest one.
+The class contains a constructor
+```cpp
+Triple (unsigned long int p, unsigned long int q, unsigned long int r);
+```
+that constructs a triple from three 4-simplices `p,q,r`. 
+
+Also the class **Triple** contains one member function
+```cpp
+ Triple opp () const;     // returns the opposite triple (p,r,q)
+```
+For the objects of type **Triple** are defined the overloaded operators  `==`, and `<` (the lexicographic ordering).
+
+We have one more overloaded operator
+```cpp
+Triple operator* (const Permutation & g, const Triple & t);
+```
+for the  action of a permutation on a distinguished triple.
+   
+#### Class Triang  
+
+The objects are 15-vertex 8-dimensional pure simplicial complexes. A simplicial complex $K$ is stored in the variable 
+```cpp
+set <unsigned long int> simp;
+```
+which contains the set of 8-simplices of the complex. Besides, the class contains the variable
+```cpp
+unsigned long long int cert;
+```
+that is equal to the certificate of the complex. The certificate is computed whenever we create or modify the object.
+
+The class contains two contructors:
+```cpp
+Triang () { }
+Triang (set <unsigned long int> & simp);
+```
+The first one is a default constructor of an empty complex. The second one produces the complex with the given set `simp` of maximal simplices.
+
+
+
+#### Member functions of the class Triang
+
+```cpp
+bool isomorph (const Triang & b, const set <Permutation> & group, Permutation & isomorphism) const;
+bool isomorph (const Triang & b, const set <Permutation> & group) const;
+   /* Check whether there exists a weak G-equivariant isomorphism between
+    * two complexes. If exists, it is written to the variable isomorphism.
+    */
+
+set <Permutation> symm_group () const;   // Returns the set of all symmetries of the given complex 
+int symm_group_order() const;            // Returns the order of the symmetry group of the given complex
+set <Permutation> equiv_symm_group (const set <Permutation> & group) const;
+   /* Returns the set of all weak G-equivariant symmetries (automorphisms)
+    * of the given triangulation.
+    */
+
+vector <unsigned int> distrib() const;  // Returns the distribution m(K)=(m3,...,m8) encoded in the certificate
+set <Triple> compute_triples (const set <Permutation> & group) const;
+    /* Returns the set of representatives of G-orbits of distinguished triples of K
+     * The function works correctly only if the triangulation is G-invariant.
+     */
+void apply_triple_flip (const set <Permutation> & group, const Triple & t);
+    /* The function applies the equivariant triple to the triangulation
+     * The triple must be admissible!
+     */
+
+private:
+    void compute_cert();
+    /* Computes the certificate of K and writes it to the variable cert
+     */
+
+    vector <vector <vector <int> > > neigh_matrix () const;
+    /* Returns the 15x15x15 3-dim matrix N such that
+     * N[i][j][k] is the number of 8-simplices that contain
+     * the three vertices i, j, k
+     */
+```
+
 ## Program "find"
 
 This program is an implementation of the algorithm described in Section 4 of [G1]. We are not going to duplicate this description here. Also we are not going to duplicate here multiple comments in the files **find.cpp** and **find.hpp**. So here we shall give only several general comments on technical issues concerning the implementation of the algorithm. 
