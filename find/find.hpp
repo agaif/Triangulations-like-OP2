@@ -19,6 +19,14 @@
  * Change it to `unsigned int' if you expect more than 65536 orbits.
  * This will increase the amount of required memory */
 
+/* Uncomment exactly one of the following three lines to set the type of logs:
+ * 'f' - full logs
+ * 's' - standard logs
+ * 'n' - no logs
+ */
+//#define type_log 'f'
+#define type_log 's'
+//#define type_log 'n'
 
 #include <stdio.h>
 #include <iostream>
@@ -34,6 +42,7 @@ using namespace std;
 
 // Functions for the action on subsets
 
+set <unsigned long int> minimize_simplices (set <unsigned long int> & simplices);
 bool ifsmallest_subset (unsigned long int );
 unsigned long int next_subset (unsigned long int);
 
@@ -84,6 +93,7 @@ bool decrease_one_level();
 void decrease_level();
 int number_of_prohibited_simplices (int_orbit n);
 bool eliminate_by_possible_number_of_simplices ();
+bool take_initial_orbits ();
 void selection ();
 
 // Output functions
