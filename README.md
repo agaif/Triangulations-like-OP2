@@ -463,15 +463,19 @@ The library contains mostly I/O functions. Let us list the functions with short 
 ```cpp
 bool generate_group (ifstream & file, int & degree, int & group_order,
                      vector <Permutation> & group_elements);
+bool generate_group (ifstream & file, int & degree, int & group_order,
+                     set <Permutation> & group_elements);
 ```       
 
-The function reads from `file` a permutation group $G\subset S_d$ in the standard format (see above). All elements of the group $G$ are written to the vector `group_elements` in some order. (Note that we pass from the numbering of the vertices starting from $1$ in `file` to the numbering of the vertices starting from $0$ in the objects of class **Permutation**.) The variables `degree` and `group_order` are set to be equal to $d$ and to $|G|$, respectively.  
+The function reads from `file` a permutation group $G\subset S_d$ in the standard format (see above). All elements of the group $G$ are written to the vector `group_elements` in some order (respectively, to the set `group_elements`). (Note that we pass from the numbering of the vertices starting from $1$ in `file` to the numbering of the vertices starting from $0$ in the objects of class **Permutation**.) The variables `degree` and `group_order` are set to be equal to $d$ and to $|G|$, respectively.  
 
 ```cpp
 void print_simplices (ofstream & file, int number_of_vertices,
                       const set <unsigned long int> & simplices);
+void print_simplices (ofstream & file, int number_of_vertices,
+                      const vector <unsigned long int> & simplices);
 ```
-The function writes to `file` the set of simplices `simplices` in the standard standard. Recall that this means that the number `simplices.size()` is written to the first line, and each of the following lines contains a sequence of binary digits encoding the corresponding simplex (i.e. the `number_of_vertices` rightmost bits of `simplices[i]` in the reversed order). The parameter `number_of_vertices' must be equal to the total number of vertices of the simplicial complex.     
+The function writes to `file` the set (or vector) of simplices `simplices` in the standard format. Recall that this means that the number `simplices.size()` is written to the first line, and each of the following lines contains a sequence of binary digits encoding the corresponding simplex (i.e. the `number_of_vertices` rightmost bits of `simplices[i]` in the reversed order). The parameter `number_of_vertices' must be equal to the total number of vertices of the simplicial complex.     
 
 
 ```cpp
@@ -498,6 +502,11 @@ bool read_triang (ifstream & file, int number_of_vertices,
                   int & number_of_orbits, set <unsigned long int> & orbit_rep);
 bool read_triang (ifstream & file, int number_of_vertices,
                   set <unsigned long int> & orbit_rep);
+bool read_triang (ifstream & file, int number_of_vertices,
+                  int & number_of_vertices_in_simplex,
+                  int & number_of_orbits, vector <unsigned long int> & orbit_rep);
+bool read_triang (ifstream & file, int number_of_vertices,
+                  vector <unsigned long int> & orbit_rep);
 ```
 The function reads from `file` a simplicial complex in the standard format (see above). The parameter `number_of_vertices` must be equal to the number of vertices of the complex. The simplices in `file` are transformed to the type `unsigned long int` and joined into the set `orbit_rep`. The variables `number_of_vertices_in_simplex` and `number_of_orbits` (if present) are set tobe equal to the number of vertices of each simplex (all these numbers are supposed to be equal to each other) and to the number of simplices in `file`, respectively.
 
