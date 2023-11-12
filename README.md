@@ -59,7 +59,7 @@ The files with the input data are to be put in the directory of the program (for
 
 The main object we are working with is a pure $d$-dimensional simplicial complex with $n$ vertices numbered from $1$ to $n$ with the given symmetry group $G$. In the most important for us case, $d=16$, $n=27$, and $|G|=351$. 
 
-### Standard format for a group $G$
+### Standard format for a group G
 
 The following description of the symmetry $G\subset S_n$ should be provided in the file **symmetry_group.dat**. The first line of the file contains the degree $n$ of the permutation group. Further lines contain generators of $G$, one generator per line. Each generator is given in cycle notation, cycles are surrounded by round brackets, vertices in each cycle are separated by spaces. Additional spaces are irrelevant. Empty lines are not allowed.  For instance, the $351$-element group $G_{351}\subset S_{27}$ is given by the following file: 
 ```
@@ -333,10 +333,57 @@ Descriptions of different isomorphism groups are separated by empty lines.
 
 **Input data:**
 + A file **symmetry_group.dat** describing a group $G$ in the standard format.
-+ A file **triang.dat** containing the list of all maximal simplices (**not** representatives of $G$-orbits) of a 15-vertex 8-manifold complex $K$ like the quaternionic projective plane. (The first line contains the total number of 8-simplices, which must be 490; the following lines contain the 8-simplices in the standard format.)
-**Note:** The group $G$ must be contained in the symmetry group of $K$ but  may not coincide with it.
++ A file **triang.dat** containing the list of all maximal simplices (**not** representatives of $G$-orbits) of a 15-vertex 8-manifold complex $K_0$ like the quaternionic projective plane. (The first line contains the total number of 8-simplices, which must be 490; the following lines contain the 8-simplices in the standard format.)
+**Remark.** The group $G$ must be contained in the symmetry group of $K_0$ but  may not coincide with it.
 
 **Output data:**
+ Three files describing the connected component $\mathcal{G}_G(K_0)$ of~$K_0$ in the equivariant triple graph $\mathcal{G}_G$:
+ 
++ A file **vertices.dat** conatining a brief information about vertices $K$ of $\mathcal{G}_G(K_0)$ in the following format:
+  ```
+  #<number of vertex>
+  *<order of symmetry group of K>
+  <the certificate of K>
+  ```
+  For instance,
+  ```
+  #3
+  *5
+  1411846687417785
+  ```
+  Descriptions of different vertices are separated by empty lines.
++ A file **vertices_details.dat** conatining a detailed information about vertices $K$ of $\mathcal{G}_G(K_0)$ in the following format:
+  ```
+  #<number of vertex>
+  *<order of symmetry group of K>
+  <the certificate of K>
+  =
+  m_3(K)
+  . . . . .
+  m_8(K)
+  =
+  <number of maximal simplices of K>
+  <list of all maximal simplices of K in the standard format>
+  ```
+  For instance,
+  ```
+  #3
+  *5
+  1411846687417785
+  =
+  1245
+  1465
+  1150
+  300
+  65
+  5
+  =
+  490
+  110011111110000
+  . . . . .
+  000100101111111
+  ```
+  Descriptions of different vertices are separated by empty lines.
 
 ## Common libraries 
 
