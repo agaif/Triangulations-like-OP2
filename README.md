@@ -339,7 +339,7 @@ Descriptions of different isomorphism groups are separated by empty lines.
 **Output data:**
  Three files describing the connected component $\mathcal{G}_G(K_0)$ of~$K_0$ in the equivariant triple graph $\mathcal{G}_G$:
  
-+ A file **vertices.dat** conatining a brief information about vertices $K$ of $\mathcal{G}_G(K_0)$ in the following format:
++ A file **vertices.dat** containing a brief information about vertices $K$ of $\mathcal{G}_G(K_0)$ in the following format:
   ```
   #<number of vertex>
   *<order of symmetry group of K>
@@ -352,7 +352,7 @@ Descriptions of different isomorphism groups are separated by empty lines.
   1411846687417785
   ```
   Descriptions of different vertices are separated by empty lines.
-+ A file **vertices_details.dat** conatining a detailed information about vertices $K$ of $\mathcal{G}_G(K_0)$ in the following format:
++ A file **vertices_details.dat** containing a detailed information about vertices $K$ of $\mathcal{G}_G(K_0)$ in the following format:
   ```
   #<number of vertex>
   *<order of symmetry group of K>
@@ -384,7 +384,16 @@ Descriptions of different isomorphism groups are separated by empty lines.
   000100101111111
   ```
   Descriptions of different vertices are separated by empty lines.
-
++ A file **edges.dat** containing information about edges of $\mathcal{G}_G(K_0)$. The $i^{\th}$ line contain information about edges from edges from the $i^{\th}$ vertex in the following format:
+  ```
+  i: <numbers of vertices connected by edges with i separated by spaces>
+  ```
+  Multiple edges yield repetitions of vertices in the list. Self-inverse loops are marked by adding `(si)`. Each non-self-inverse   loop has two endpoints, so it yields the number `i` repeated twice. We enumerate loops first and then all other vertices in increasing order.
+  For instance, the line
+  ```
+  3: 3(si) 3 3 1 5 5 6
+  ```
+  means that vertex 3 is connected with itself by one self-inverse loop and one non-self-inverse loop, is connected with vertex 5 by two edges and with each of the vertices 1 and 6 by one edge.
 ## Common libraries 
 
 ### Library permutation.cpp / permutation.hpp
