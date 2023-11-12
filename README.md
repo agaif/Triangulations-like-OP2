@@ -1,39 +1,55 @@
-# Triangulations of manifolds like the octonionic projective plane
+# Triangulations of manifolds like the octonionic and the quaternionic projective planes
 
 **Alexander A. Gaifullin**
 
-This repository contains C++ programs implementing algorithms for the paper 
+This repository contains C++ programs implementing algorithms for the papers 
 
-Alexander A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", [arXiv:2207.08507](https://arxiv.org/abs/2207.08507)
+[G1] Alexander A. Gaifullin, "634 vertex-transitive and more than $10^{103}$ non-vertex-transitive 27-vertex triangulations of manifolds like the octonionic projective plane", [arXiv:2207.08507](https://arxiv.org/abs/2207.08507)
 
-which is further referred to as [G].
+[G2] Alexander A. Gaifullin, "On possible symmetry groups of 27-vertex triangulations of manifolds like the octonionic projective plane", [arXiv:2310.16679](https://arxiv.org/abs/2310.16679)
 
-This README file contains only technical information on the realizations of the algorithms. For the aims and descriptions of the algorithms, and also for mathematical terminology used below, see the quoted paper [G].
+[G3] Alexander A. Gaifullin, "New examples and partial classification of 15-vertex triangulations of the quaternionic projective plane", to appear
+
+Version 1 of this repository (July, 2022) contained the programs for [G1] only. In the current Version 2, the programs for [G2] and [G3] are also added.
+
+This README file contains only technical information on the realizations of the algorithms. For the aims and descriptions of the algorithms, and also for mathematical terminology used below, see the quoted papers [G1], [G2], and [G3].
 
 ## General information
 
-Each directory, except for the directory **common**, contains a separate program. Below is the list of all these programs with their short descriptions. The directory **common** contains two libraries which are used by all the programs. Namely, **myiofunctions.cpp / myiofunctions.hpp** contain input/output functions and **permutation.cpp / permutation.hpp** contain the class **Permutation**, which allows working with elements of permutation groups. The description of these libraries is given below.
+Each directory, except for the directory **common**, contains a separate program. Below is the list of all these programs with their short descriptions. The directory **common** contains three libraries which are used by different programs. Namely, **myiofunctions.cpp / myiofunctions.hpp** contain input/output functions and **permutation.cpp / permutation.hpp** contain the class **Permutation**, which allows working with elements of permutation groups. These two libraries are used by all the programs. The third library **triang.cpp / triang.hpp**, which was added in Version 2, is more special. It serves for working with 15-vertex 8-dimensional triangulations of manifolds like the quaternionic projective plane and it is used only by the four programs **isomorphism_groups**, **symm_group**, **triple_flip_graph**, and **triple_flip_graph_random**.  The description of these libraries is given below.
 
 **List of programs:**
 
 1. **find**:<br/> 
-   Finds all weak pseudo-manifolds $K$ with the prescribed vertex set $V$, dimension $d$, and symmetry group $G$ that have at least $N$ maximal simplices and do not contain a pair of simplices $\sigma$ and $\tau$ such that $\sigma\cup\tau$ is the whole vertex set $V$. Implements the algorithm described in Section 4 of [G].
+   Finds all weak pseudo-manifolds $K$ with the prescribed vertex set $V$, dimension $d$, and symmetry group $G$ that have at least $N$ maximal simplices and do not contain a pair of simplices $\sigma$ and $\tau$ such that $\sigma\cup\tau$ is the whole vertex set $V$. Implements the algorithm described in Section 4 of [G1]. In Version 2 the program has been slightly modified so that it now allows to find only those weak pseudo-manifolds that contain certain required set of maximal simplices.
 2. **check**: <br/> 
-Checks that the given $G$-invariant simplicial complex $K$ is a combinatorial manifold. (A positive answer guarantees that $K$ is a combinatorial manifold but a negative answer does not guarantee that $K$ is not.) Implements the algorithm described in Section 5 of [G].
+Checks that the given $G$-invariant simplicial complex $K$ is a combinatorial manifold. (A positive answer guarantees that $K$ is a combinatorial manifold but a negative answer does not guarantee that $K$ is not.) Implements the algorithm described in Section 5 of [G1].
 3. **fvect**: <br/>
 Computes the $f$-vector of a $G$-invariant pure simplicial complex $K$.
-5. **permute**: <br/>
- This program, for a given $G$-invariant simplicial complex $K$ and an element $h$ in the normalizer of $G$, produces the $G$-invariant simplicial complex $h(K)$. This simple script was conveniently used to decompose the list of 24 combinatorial manifolds from Theorem 2.2 of [G] (which is produced by **find**) into 4 orbits with respect to the group $C_2\times C_3$ generated by the sign reversal and the Frobenius automorphism.
-4. **num_neighbors**: <br/>
-This program, for a given $d$-dimensional simplicial complex $K$, computes the distribution of the numbers $s(\rho)$ for $(d-2)$-simplices $\rho$, where $s(\rho)$ is the number of $d$-simplices $\sigma\in K$ containing $\rho$. It was used to produce Table 4 in [G]. 
-5. **num_neighbors_pairs**: <br/>
-This program, for a given $d$-dimensional simplicial complex $K$ and two given vertices $u$ and $v$ of it, computes the matrix $(N_{pq})$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $s(\tau\setminus \\{u\\})=p$, and $s(\tau\setminus \\{v\\})=q$. It was used to produce Tables 6-10 in [G]. 
-6. **triples**: <br/>
- This program computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex (see Section 8 of [G] for the definition of $\nu$-parameters). Besides, when $K$ is a combinatorial manifold, it finds all distinguished subcomplexes, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices. Computations by means of this program yield Propositions 8.2 and 8.4 in [G].
-7. **allsimp**: <br/>
+4. **permute**: <br/>
+ This program, for a given $G$-invariant simplicial complex $K$ and an element $h$ in the normalizer of $G$, produces the $G$-invariant simplicial complex $h(K)$. This simple script was conveniently used to decompose the list of 24 combinatorial manifolds from Theorem 2.2 of [G1] (which is produced by **find**) into 4 orbits with respect to the group $C_2\times C_3$ generated by the sign reversal and the Frobenius automorphism.
+5. **num_neighbors**: <br/>
+This program, for a given $d$-dimensional simplicial complex $K$, computes the distribution of the numbers $s(\rho)$ for $(d-2)$-simplices $\rho$, where $s(\rho)$ is the number of $d$-simplices $\sigma\in K$ containing $\rho$. It was used to produce Table 4 in [G1]. 
+6. **num_neighbors_pairs**: <br/>
+This program, for a given $d$-dimensional simplicial complex $K$ and two given vertices $u$ and $v$ of it, computes the matrix $(N_{pq})$, where $N_{pq}$ is the number of $(d-1)$-simplices $\tau\in K$ such that $u,v\in\tau$, $s(\tau\setminus \\{u\\})=p$, and $s(\tau\setminus \\{v\\})=q$. It was used to produce Tables 6-10 in [G1]. 
+7. **triples**: <br/>
+ This program computes the $\nu$-parameters of simplices of a pure $d$-dimensional simplicial complex (see Section 8 of [G1] for the definition of $\nu$-parameters). Besides, when $K$ is a combinatorial manifold, it finds all distinguished subcomplexes, that is, subcomplexes of the form $(\Delta_1*\partial\Delta_2)\cup(\Delta_2*\partial\Delta_3)\cup(\Delta_3*\partial\Delta_1)$, where $\Delta_1$, $\Delta_2$, and $\Delta_3$ are $(d/2)$-simplices. Computations by means of this program yield Propositions 8.2 and 8.4 in [G1].
+8. **allsimp**: <br/>
 This auxiliary script produces the list of all simplices in some $G$-invariant set from a given symmetry group $G$ and a list of representatives of $G$-orbits of the simplices in this set. 
-8. **operations**: <br/>
-This simple script performs basic operations (compairing, union, intersection, difference) for any set of strings. It can be conveniently used to check whether two simplicial complexes coincide, find a common part of two simplicial complexes, etc. In particular, it was used to produce Table 3 and Tables 11-20 in [G].   
+9. **operations**: <br/>
+This simple script performs basic operations (compairing, union, intersection, difference) for any set of strings. It can be conveniently used to check whether two simplicial complexes coincide, find a common part of two simplicial complexes, etc. In particular, it was used to produce Table 3 and Tables 11-20 in [G1].
+10. **isomorphism_groups** (added in Version 2): <br/>
+This program divides the given list of 15-vertex 8-dimensional simplicial complexes into groups, each consisting of isomorphic pseudomanifolds. It is used to eliminate repetitions in the lists of 15-vertex triangulations of $\mathbb{HP}^2$ found by means of the program **find**, see Sections 3, 4, and 6 of [G3].
+11. **symm_group** (added in Version 2): <br/>
+This program computes the symmetry group of a given 15-vertex 8-dimensional complex. It is also used in Sections 3, 4, and 6 of [G3].
+12. **triple_flip_graph** (added in Version 2): <br/>
+This program finds the connected component of a given 15-vertex combinatorial $8$-manifold $K$ like the quaternionic projective plane in the equivariant triple flip graph $\mathcal{G}_G$. It is used in Section 8 of [G3].
+13. **triple_flip_graph_random** (added in Version 2): <br/>
+This program launches a random walk on the equivariant triple flip graph $\mathcal{G}_G$. It should be interupted, since it never stops itself. It is also used in Section 8 of [G3].
+
+The programs 2-9 remain completely unchanged from Version 1.
+
+**Note:** The programs **isomorphism_groups** and **symm_group** are written so that they work for only 15-vertex 8-dimensional simplicial complexes. The reason is just that we do not need them in different situations. The program  **triple_flip_graph** and **triple_flip_graph_random** are written so that they work for only 15-vertex combinatorial $8$-manifolds like the quaternionic projective plane. The matter is that this is the only case when the triple flip graphs $\mathcal{G}_G$ are defined, non-trivial and accessible to a computer. (In dimension 16 the corresponding graphs are far beyond the capabilities of a computer, and in dimensions 2 and 4 they are trivial.) 
 
 Among these programs, the only two non-trivial are the programs **find** and **check**. For them, we will produce detailed descriptions below. The other programs are very simple. They do not require any special explanation.
 
@@ -90,8 +106,8 @@ The file **triang.dat** does not contain a description of the group $G$. So, in 
 
 + A file **symmetry_group.dat** describing the symmetry group $G$ in the standard format.
 + A file **dimnum.dat** containing two numbers $d$ and $N$ separated by a space (or several spaces); the first number $d$ is the dimension of weak pseudomanifolds $K$ we are looking for, and the second number $N$ is the smallest number of $d$-simplices in $K$, for instance,  
-`16 100386` <br/> 
-     
+`16 100386` <br/>
++ A file **reqsimp.dat** (optional) containing the list of required $d$-simplices. The first line of the file contains the number of required $d$-simplices, then the list of simplices (one per line) follows in the standard format. The program will find only those pseudomanifolds that contain all the required simplices. If the file **reqsimp.dat** is either missing or consists of a single number 0, then no restrictions are imposed.      
 
 **Output data:**
 
@@ -381,9 +397,9 @@ The function reads from `file` a simplicial complex in the standard format (see 
 
 ## Program "find"
 
-This program is an implementation of the algorithm described in Section 4 of [G]. We are not going to duplicate this description here. Also we are not going to duplicate here multiple comments in the files **find.cpp** and **find.hpp**. So here we shall give only several general comments on technical issues concerning the implementation of the algorithm. 
+This program is an implementation of the algorithm described in Section 4 of [G1]. We are not going to duplicate this description here. Also we are not going to duplicate here multiple comments in the files **find.cpp** and **find.hpp**. So here we shall give only several general comments on technical issues concerning the implementation of the algorithm. 
 
-* The algorithm in Section 4 of [G] consists of two stages: 
+* The algorithm in Section 4 of [G1] consists of two stages: 
    + *Stage 1: Initial generation of admissible orbits and adjacency groups and initial prohibition of certain pairs of orbits*. This stage is governed by the function
         ```cpp
          void generate_orbits_and_adjacency_groups ();
@@ -445,7 +461,7 @@ and **dimnum.dat**
 ```
 16 100386
 ```
-The result of the work of the program is the list of $24$ weak pseudomanifolds, which can be checked to be combinatorial manifolds by the program **check**. Note that the combinatorial manifolds $K_1$, $K_2$, $K_3$, and $K_4$ from Theorem 2.2 in [G] have the numbers $21$, $12$, $11$, and $10$ in this list, respectively, and the other $20$ combinatorial manifolds are obtained from these four by the action of the sign reversal $S$ and the Frobenius automorphism $F$,
+The result of the work of the program is the list of $24$ weak pseudomanifolds, which can be checked to be combinatorial manifolds by the program **check**. Note that the combinatorial manifolds $K_1$, $K_2$, $K_3$, and $K_4$ from Theorem 2.2 in [G1] have the numbers $21$, $12$, $11$, and $10$ in this list, respectively, and the other $20$ combinatorial manifolds are obtained from these four by the action of the sign reversal $S$ and the Frobenius automorphism $F$,
 ```
 S = (1 14)(2 15)(3 16)(4 17)(5 18)(6 19)(7 20)(8 21)(9 22)(10 23)(11 24)(12 25)(13 26)
 F = (2 4 10)(3 7 6)(5 13 11)(8 9 12)(15 17 23)(16 20 19)(18 26 24)(21 22 25)
@@ -458,7 +474,7 @@ The program consists of two **cpp** files **check.cpp** and **simpmax.cpp** and 
 
 The files **simpmax.cpp / simpmax.hpp** contain the class `SimpMax`. An object of this class is a simplicial complex presented by the set of maximal simplices only without storing the simplices that are not maximal. We will conveniently consider all simplicial complexes associated with the initial given simplicial complex $K$ (such as links and contrastars of simplices, etc.) as complexes on the same vertex set $\\{1,\\ldots,n\\}$. Assuming this we allow *ghost vertices* i.e. vertices that are not contained in any simplex of the complex. For instance, all vertices of the simplex $\\sigma$ automatically become ghost vertices for $\\mathrm{link}(\\sigma,K)$. All member functions of the class `SimpMax` are described in comments in the file **simpmax.hpp**. We will not repeate these descriptions here.
 
-The program in **check.cpp** realizes the algorithm from Section 5 of [G]. The only technical point that I would like to discuss here is the following. A central role in the algorithm is played by the simplicial complexes
+The program in **check.cpp** realizes the algorithm from Section 5 of [G1]. The only technical point that I would like to discuss here is the following. A central role in the algorithm is played by the simplicial complexes
 $$L_{\\rho,\\sigma} =\\mathrm{cost}(\\sigma\\setminus\\rho,\\mathrm{link}(\\rho,K)),$$
 where $\\sigma$ is a maximal (i.e. $d$-dimensional) simplex of $K$ and $\\rho$ is a face of $\\sigma$ of a smaller dimension. We need to check that, for each simplex $\\rho\in K$, at least one of the complexes $L_{\\rho,\\sigma}$ is nonevasive. Nevertheless, it turns out that generating this complexes is an even more time-consuming procedure than checking the nonevasiveness. So it is convenient to generate all the complexes $L_{\\rho,\\sigma}$ with the same maximal simplex $\\sigma$ simultaneously. This is achieved in the following way. Note that each $d$-simplex $\\tau\\ne\\sigma$ contributes with the simplex $\\tau\\setminus\\sigma$ to each of the complexes $L_{\\rho,\\sigma}$ satisfying $\\rho\\subseteq\\sigma\\cap\\tau$, that is, to the complex $L_{\\sigma\\cap\\tau,\\sigma}$ and all the complexes $L_{\\rho,\\sigma}$ with strictly smaller simplices $\\rho$.
 
