@@ -1,4 +1,11 @@
 # Triangulations HP2_15 with symmetry group S3
+#
+# (C) Alexander A. Gaifullin, 2023
+#
+# HP2_15(S3,1) is one of the three 
+# Brehm-Kuhnel triangulations.
+# All other triangulations are new.
+#
 # Generators of symmetry group:
 # (1 2 3)(4 5 6)(7 8 9)(10 11 12)(13 14 15)
 # (1 4)(2 6)(3 5)(7 8)(10 11)(13 14)
