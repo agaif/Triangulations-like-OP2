@@ -22,7 +22,9 @@ Alongside with programs, the repository contains the data files with lists of si
 (1 14 27)(2 4 10)(3 22 13)(5 6 21)(7 25 11)(8 19 18)(9 16 26)(12 20 24)(15 23 17)
 ```
 + Files **HP2_15_A4.dat**, **HP2_15_C6xC2.dat**, **HP2_15_C7.dat**, **HP2_15_S3.dat**, **HP2_15_C6.dat**, and **HP2_15_C5.dat** contain the lists of all maximal simplices of the $15$-vertex triangulations of $\mathbb{HP}^2$ (with specified symmetry groups) constructed in [G3].
-+ File **HP2_15_G_component.dat** contain the lists of all maximal simplices of $15$-vertex triangulations of $\mathbb{HP}^2$ that consitute the connected component $\mathcal{G}_0$ of the Brehm-Kühnel triangulation in the triple flip graph $\mathcal{G}$, see Section 8 of [G3].
++ File **HP2_15_G_component.dat** contain the lists of all maximal simplices of $15$-vertex triangulations of $\mathbb{HP}^2$ that constitute the connected component $\mathcal{G}_0$ of the Brehm-Kühnel triangulation in the triple flip graph $\mathcal{G}$, see Section 8 of [G3].
+
+  **Remark.** The triangulations with the same names in **HP2_15_G_component.dat** and one of the files **HP2_15_A4.dat** and  **HP2_15_S3.dat** are isomorphic to each other. However, the two triangulations $\mathbb{HP}^2_{15}(S_3,1)$ and $\mathbb{HP}^2_{15}(S_3,2)$ are given in **HP2_15_G_component.dat** and  **HP2_15_S3.dat** with different orderings of their vertices.
 
 For the description of the format in which the simplices are stored in these files, see below.
 
@@ -61,7 +63,7 @@ This program launches a random walk on the equivariant triple flip graph $\mathc
 
 The programs 2-9 remain completely unchanged from Version 1.
 
-**Note:** The programs **isomorphism_groups** and **symm_group** are written so that they work for only 15-vertex 8-dimensional simplicial complexes. The reason is just that we do not need them in different situations. The program  **triple_flip_graph** and **triple_flip_graph_random** are written so that they work for only 15-vertex combinatorial $8$-manifolds like the quaternionic projective plane. The matter is that this is the only case when the triple flip graphs $\mathcal{G}_G$ are defined, non-trivial and accessible to a computer. (In dimension 16 the corresponding graphs are far beyond the capabilities of a computer, and in dimensions 2 and 4 they are trivial.) 
+**Remark** The programs **isomorphism_groups** and **symm_group** are written so that they work for only 15-vertex 8-dimensional simplicial complexes. The reason is just that we do not need them in different situations. The program  **triple_flip_graph** and **triple_flip_graph_random** are written so that they work for only 15-vertex combinatorial $8$-manifolds like the quaternionic projective plane. The matter is that this is the only case when the triple flip graphs $\mathcal{G}_G$ are defined, non-trivial and accessible to a computer. (In dimension 16 the corresponding graphs are far beyond the capabilities of a computer, and in dimensions 2 and 4 they are trivial.) 
 
 Among these programs, the only two non-trivial are the programs **find** and **check**. For them, we will produce detailed descriptions below. The other programs are very simple. They do not require any special explanation.
 
