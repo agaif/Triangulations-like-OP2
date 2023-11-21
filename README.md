@@ -8,7 +8,7 @@ This repository contains C++ programs implementing algorithms for the papers
 
 [G2] Alexander A. Gaifullin, "On possible symmetry groups of 27-vertex triangulations of manifolds like the octonionic projective plane", [arXiv:2310.16679](https://arxiv.org/abs/2310.16679)
 
-[G3] Alexander A. Gaifullin, "New examples and partial classification of 15-vertex triangulations of the quaternionic projective plane", to appear
+[G3] Alexander A. Gaifullin, "New examples and partial classification of 15-vertex triangulations of the quaternionic projective plane", [arXiv:2311.11309](https://arxiv.org/abs/2311.11309)
 
 Version 1 of this repository (July, 2022) contained the programs for [G1] only. In the current Version 2, the programs for [G2] and [G3] are also added.
 
